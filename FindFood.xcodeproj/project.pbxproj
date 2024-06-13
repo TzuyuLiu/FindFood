@@ -11,6 +11,7 @@
 		648353202C1ACA0F009B4C9B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6483531F2C1ACA0F009B4C9B /* User.swift */; };
 		648353282C1AD53F009B4C9B /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 648353272C1AD53F009B4C9B /* GoogleSignIn */; };
 		6483532A2C1AD53F009B4C9B /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 648353292C1AD53F009B4C9B /* GoogleSignInSwift */; };
+		6483532D2C1ADD48009B4C9B /* GSAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6483532C2C1ADD48009B4C9B /* GSAuthProvider.swift */; };
 		64EB52F52C1A958F0043D5E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB52F42C1A958F0043D5E6 /* AppDelegate.swift */; };
 		64EB52F72C1A958F0043D5E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB52F62C1A958F0043D5E6 /* SceneDelegate.swift */; };
 		64EB52F92C1A958F0043D5E6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB52F82C1A958F0043D5E6 /* LoginViewController.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		6483531D2C1ABFCF009B4C9B /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
 		6483531F2C1ACA0F009B4C9B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6483532C2C1ADD48009B4C9B /* GSAuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSAuthProvider.swift; sourceTree = "<group>"; };
 		64EB52F12C1A958F0043D5E6 /* FindFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64EB52F42C1A958F0043D5E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64EB52F62C1A958F0043D5E6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +102,14 @@
 			path = Feature;
 			sourceTree = "<group>";
 		};
+		6483532B2C1ADD39009B4C9B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				6483532C2C1ADD48009B4C9B /* GSAuthProvider.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		64EB52E82C1A958F0043D5E6 = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +142,7 @@
 				64EB53022C1A95900043D5E6 /* Info.plist */,
 				648353222C1AD203009B4C9B /* Feature */,
 				648353212C1AD1E1009B4C9B /* Infrastructure */,
+				6483532B2C1ADD39009B4C9B /* Login */,
 			);
 			path = FindFood;
 			sourceTree = "<group>";
@@ -295,6 +306,7 @@
 				64EB52F52C1A958F0043D5E6 /* AppDelegate.swift in Sources */,
 				6483531E2C1ABFCF009B4C9B /* AuthProvider.swift in Sources */,
 				648353202C1ACA0F009B4C9B /* User.swift in Sources */,
+				6483532D2C1ADD48009B4C9B /* GSAuthProvider.swift in Sources */,
 				64EB52F72C1A958F0043D5E6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
