@@ -16,5 +16,4 @@ protocol AuthProvider {
     typealias Result = Swift.Result<User, AuthProviderError>
 
     func fetchUser(completion: @escaping(Result) -> Void)
-    func logoutUser()
 }

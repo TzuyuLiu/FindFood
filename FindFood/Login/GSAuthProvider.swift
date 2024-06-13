@@ -8,7 +8,7 @@
 import Foundation
 import GoogleSignIn
 
-final class GSAuthProvider: AuthProvider {
+final class GSAuthProvider: AuthProvider, LogoutProvider {
     var presentViewController: UIViewController
 
     init(presentViewController: UIViewController) {
