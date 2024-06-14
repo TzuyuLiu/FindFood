@@ -7,6 +7,7 @@
 
 import UIKit
 import GoogleSignIn
+import FBSDKCoreKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -24,7 +25,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
 
-        GIDSignIn.sharedInstance.handle(url)
+        setupGoogleLogin(url)
+        setupFacebokLogin(url)
     }
 }
+
+private extension SceneDelegate {
+    func setupGoogleLogin(_ url: URL) {
+        GIDSignIn.sharedInstance.handle(url)
+    }
+
+    func setupFacebokLogin(_ url: URL) {
+        ApplicationDelegate.shared.application(
+             UIApplication.shared,
+             open: url,
+             sourceApplication: nil,
+             annotation: [UIApplication.OpenURLOptionsKey.annotation]
+         )
+    }
+}
+
 
