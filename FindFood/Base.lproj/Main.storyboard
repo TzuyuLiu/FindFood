@@ -24,14 +24,29 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="google" title="使用Google登入"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="tappedGoogleLogin" destination="MLM-J4-48b" eventType="touchUpInside" id="OWl-8c-huQ"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="973-l7-6xH">
+                                <rect key="frame" x="16" y="642" width="361" height="35"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="使用Facebook登入"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="beZ-HK-z6c"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="pGd-pX-zEA" firstAttribute="top" secondItem="973-l7-6xH" secondAttribute="bottom" constant="20" id="FhJ-zr-eVq"/>
+                            <constraint firstItem="973-l7-6xH" firstAttribute="trailing" secondItem="pGd-pX-zEA" secondAttribute="trailing" id="PEc-Xr-elm"/>
+                            <constraint firstItem="973-l7-6xH" firstAttribute="leading" secondItem="pGd-pX-zEA" secondAttribute="leading" id="bJo-B7-icD"/>
                             <constraint firstItem="beZ-HK-z6c" firstAttribute="bottom" secondItem="pGd-pX-zEA" secondAttribute="bottom" constant="32" id="k2c-e7-gfW"/>
                             <constraint firstItem="pGd-pX-zEA" firstAttribute="leading" secondItem="beZ-HK-z6c" secondAttribute="leading" constant="16" id="qOx-h5-5Zc"/>
                             <constraint firstItem="beZ-HK-z6c" firstAttribute="trailing" secondItem="pGd-pX-zEA" secondAttribute="trailing" constant="16" id="zH3-VN-WfQ"/>
@@ -116,6 +131,9 @@
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
