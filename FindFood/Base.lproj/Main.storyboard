@@ -15,8 +15,27 @@
                     <view key="view" contentMode="scaleToFill" id="fNb-nT-WsS">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGd-pX-zEA">
+                                <rect key="frame" x="16" y="697" width="361" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="AAD-1p-HVS"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="google" title="使用Google登入"/>
+                                <connections>
+                                    <action selector="tappedGoogleLogin" destination="MLM-J4-48b" eventType="touchUpInside" id="OWl-8c-huQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="beZ-HK-z6c"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="beZ-HK-z6c" firstAttribute="bottom" secondItem="pGd-pX-zEA" secondAttribute="bottom" constant="32" id="k2c-e7-gfW"/>
+                            <constraint firstItem="pGd-pX-zEA" firstAttribute="leading" secondItem="beZ-HK-z6c" secondAttribute="leading" constant="16" id="qOx-h5-5Zc"/>
+                            <constraint firstItem="beZ-HK-z6c" firstAttribute="trailing" secondItem="pGd-pX-zEA" secondAttribute="trailing" constant="16" id="zH3-VN-WfQ"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="設定" image="gearshape" catalog="system" id="hJz-U4-AC9"/>
                 </viewController>
@@ -40,10 +59,10 @@
             </objects>
             <point key="canvasLocation" x="1746" y="277"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="qQj-Ld-Ulp">
             <objects>
-                <tabBarController id="Df5-6Y-gp9" sceneMemberID="viewController">
+                <tabBarController id="Df5-6Y-gp9" customClass="MainTabBarController" customModule="FindFood" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KzC-jE-7Eq">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -92,6 +111,7 @@
     </scenes>
     <resources>
         <image name="gearshape" catalog="system" width="128" height="123"/>
+        <image name="google" width="32" height="32"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
