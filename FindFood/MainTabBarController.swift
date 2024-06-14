@@ -13,5 +13,17 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        delegate = self
+    }
+}
+
+extension MainTabBarController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if let loginVC = viewController as? LoginViewController {
+            let loginVM = LoginViewModel(delegate: loginVC, provider: GSAuthProvider(presentViewController: loginVC))
+            loginVC.googleLogin = {
+                loginVM.login()
+            }
+        }
     }
 }
