@@ -35,7 +35,7 @@ final class FBAuthProvider: AuthProvider, LogoutProvider {
                 let uid = result["id"] as? String ?? ""
                 let name = result["name"] as? String ?? ""
                 if let picture = result["picture"] as? [String: Any], let data = picture["data"] as? [String: Any] {
-                    picUrl = data["url"] as? URL
+                    picUrl = URL(string: data["url"] as? String ?? "")
                 }
 
                 completion(.success(User(name: name, image: picUrl, idToken: uid)))
