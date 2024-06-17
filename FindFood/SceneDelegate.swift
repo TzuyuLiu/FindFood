@@ -25,17 +25,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
 
-        setupGoogleLogin(url)
-        setupFacebokLogin(url)
+        setupSigninWithGoogle(url)
+        setupSigninWithFacebok(url)
     }
 }
 
 private extension SceneDelegate {
-    func setupGoogleLogin(_ url: URL) {
+    func setupSigninWithGoogle(_ url: URL) {
         GIDSignIn.sharedInstance.handle(url)
     }
 
-    func setupFacebokLogin(_ url: URL) {
+    func setupSigninWithFacebok(_ url: URL) {
         ApplicationDelegate.shared.application(
              UIApplication.shared,
              open: url,
