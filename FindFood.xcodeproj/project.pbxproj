@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		646F4ADA2C200B3400F11FAA /* FBAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646F4AD92C200B3400F11FAA /* FBAuthProvider.swift */; };
 		6483531E2C1ABFCF009B4C9B /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6483531D2C1ABFCF009B4C9B /* AuthProvider.swift */; };
 		648353202C1ACA0F009B4C9B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6483531F2C1ACA0F009B4C9B /* User.swift */; };
 		648353282C1AD53F009B4C9B /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 648353272C1AD53F009B4C9B /* GoogleSignIn */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		646F4AD92C200B3400F11FAA /* FBAuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAuthProvider.swift; sourceTree = "<group>"; };
 		6483531D2C1ABFCF009B4C9B /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
 		6483531F2C1ACA0F009B4C9B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6483532C2C1ADD48009B4C9B /* GSAuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSAuthProvider.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				6483532C2C1ADD48009B4C9B /* GSAuthProvider.swift */,
+				646F4AD92C200B3400F11FAA /* FBAuthProvider.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				646F4ADA2C200B3400F11FAA /* FBAuthProvider.swift in Sources */,
 				64EB52F92C1A958F0043D5E6 /* LoginViewController.swift in Sources */,
 				64EB52F52C1A958F0043D5E6 /* AppDelegate.swift in Sources */,
 				648353362C1BDECA009B4C9B /* MainTabBarController.swift in Sources */,

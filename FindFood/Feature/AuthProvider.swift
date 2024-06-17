@@ -9,6 +9,7 @@ import Foundation
 
 enum AuthProviderError: Error {
     case cannotGetUserInfo
+    case convertDataFail
     case custom(reason: Error)
 }
 
