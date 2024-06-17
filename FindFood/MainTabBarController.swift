@@ -20,9 +20,13 @@ class MainTabBarController: UITabBarController {
 extension MainTabBarController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if let loginVC = viewController as? LoginViewController {
-            let loginVM = LoginViewModel(delegate: loginVC, provider: GSAuthProvider(presentViewController: loginVC))
+            let googleLoginVM = LoginViewModel(delegate: loginVC, provider: GSAuthProvider(presentViewController: loginVC))
+            let facebookLoginVC = LoginViewModel(delegate: loginVC, provider: FBAuthProvider())
             loginVC.googleLogin = {
-                loginVM.login()
+                googleLoginVM.login()
+            }
+            loginVC.facebookLogin = {
+                facebookLoginVC.login()
             }
         }
     }

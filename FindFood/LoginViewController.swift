@@ -19,6 +19,10 @@ class LoginViewController: UIViewController {
     @IBAction func tappedGoogleLogin() {
         googleLogin?()
     }
+
+    @IBAction func tappedFBLogin() {
+        facebookLogin?()
+    }
 }
 
 extension LoginViewController: LoginViewModelDelegate {
