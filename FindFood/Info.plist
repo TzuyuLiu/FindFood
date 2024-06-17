@@ -12,6 +12,14 @@
 				<string>com.googleusercontent.apps.775019942526-valqhrtobtf7irv88jlsrjjo5ttv1aht</string>
 			</array>
 		</dict>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb1140406317241233</string>
+            </array>
+        </dict>
 	</array>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
