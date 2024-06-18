@@ -8,16 +8,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
-        <scene sceneID="ygc-UH-vah">
+        <!--設定-->
+        <scene sceneID="lAk-FD-UHs">
             <objects>
-                <viewController id="w0n-yb-c37" customClass="LoginViewController" customModule="FindFood" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="cRg-g3-l3P">
+                <viewController id="MLM-J4-48b" customClass="LoginViewController" customModule="FindFood" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fNb-nT-WsS">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGd-pX-zEA">
-                                <rect key="frame" x="16" y="746" width="361" height="40"/>
+                                <rect key="frame" x="16" y="697" width="361" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="AAD-1p-HVS"/>
                                 </constraints>
@@ -34,7 +34,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="973-l7-6xH">
-                                <rect key="frame" x="16" y="691" width="361" height="35"/>
+                                <rect key="frame" x="16" y="642" width="361" height="35"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -44,31 +44,16 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="Kg4-RF-Si2"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Kg4-RF-Si2" firstAttribute="bottom" secondItem="pGd-pX-zEA" secondAttribute="bottom" constant="32" id="Fqo-Bs-83X"/>
-                            <constraint firstItem="pGd-pX-zEA" firstAttribute="leading" secondItem="Kg4-RF-Si2" secondAttribute="leading" constant="16" id="KXg-Bh-i9a"/>
-                            <constraint firstItem="973-l7-6xH" firstAttribute="trailing" secondItem="pGd-pX-zEA" secondAttribute="trailing" id="rdW-Kz-Odc"/>
-                            <constraint firstItem="973-l7-6xH" firstAttribute="leading" secondItem="pGd-pX-zEA" secondAttribute="leading" id="uRq-sC-4Y9"/>
-                            <constraint firstItem="Kg4-RF-Si2" firstAttribute="trailing" secondItem="pGd-pX-zEA" secondAttribute="trailing" constant="16" id="vsN-99-Mpr"/>
-                            <constraint firstItem="pGd-pX-zEA" firstAttribute="top" secondItem="973-l7-6xH" secondAttribute="bottom" constant="20" id="zfm-V4-fwP"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JzL-MW-g5Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2775" y="1027"/>
-        </scene>
-        <!--設定-->
-        <scene sceneID="lAk-FD-UHs">
-            <objects>
-                <viewController id="MLM-J4-48b" customClass="LoginViewController" customModule="FindFood" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fNb-nT-WsS">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="beZ-HK-z6c"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="beZ-HK-z6c" firstAttribute="trailing" secondItem="pGd-pX-zEA" secondAttribute="trailing" constant="16" id="F9v-Tx-VwA"/>
+                            <constraint firstItem="973-l7-6xH" firstAttribute="leading" secondItem="pGd-pX-zEA" secondAttribute="leading" id="SNz-Q9-H9L"/>
+                            <constraint firstItem="973-l7-6xH" firstAttribute="trailing" secondItem="pGd-pX-zEA" secondAttribute="trailing" id="UPw-tc-2Wv"/>
+                            <constraint firstItem="pGd-pX-zEA" firstAttribute="leading" secondItem="beZ-HK-z6c" secondAttribute="leading" constant="16" id="YMZ-6J-6DW"/>
+                            <constraint firstItem="beZ-HK-z6c" firstAttribute="bottom" secondItem="pGd-pX-zEA" secondAttribute="bottom" constant="32" id="pgX-Zm-Fm9"/>
+                            <constraint firstItem="pGd-pX-zEA" firstAttribute="top" secondItem="973-l7-6xH" secondAttribute="bottom" constant="20" id="v5O-uz-zdw"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="設定" image="gearshape" catalog="system" id="hJz-U4-AC9"/>
                 </viewController>
@@ -177,7 +162,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A9o-oI-6i7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3579" y="1027"/>
+            <point key="canvasLocation" x="2573" y="1027"/>
         </scene>
     </scenes>
     <resources>
