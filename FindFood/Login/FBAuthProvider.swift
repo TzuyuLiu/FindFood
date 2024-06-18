@@ -22,8 +22,7 @@ final class FBAuthProvider: AuthProvider, LogoutProvider {
             let request = GraphRequest(graphPath: "me", parameters: ["fields": "id, email, name, picture"])
 
             request.start { _, result, error in
-                guard let result = result as? [String: Any],
-                      let json = convertDictionaryToJSON(result) else {
+                guard let result = result as? [String: Any] else {
                     completion(.failure(.convertDataFail))
                     return
                 }
@@ -32,8 +31,8 @@ final class FBAuthProvider: AuthProvider, LogoutProvider {
                     return
                 }
 
-                let decoder = JSONDecoder()
-                let decodeResult = Swift.Result{ try decoder.decode(FacebookUserMapper.Root.self, from: json) }
+                let mapper = FacebookUserMapper(result)
+                let decodeResult = mapper.result
 
                 switch decodeResult {
                 case .success(let data):

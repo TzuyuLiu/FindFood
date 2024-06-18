@@ -8,7 +8,23 @@
 import Foundation
 
 final class FacebookUserMapper {
-    private init() { }
+    private let data: Data?
+
+    init(_ dictionary: [String: Any]) {
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: dictionary, options: .prettyPrinted) else {
+           print("Something is wrong while converting dictionary to JSON data.")
+            data = nil
+            return
+        }
+        data = jsonData
+    }
+
+    var result: Result<FacebookUserMapper.Root, Error> {
+        guard let data = data else { return .failure(NSError(domain: "Data is nil", code: 999)) }
+        let decoder = JSONDecoder()
+        return Swift.Result{ try decoder.decode(FacebookUserMapper.Root.self, from: data) }
+    }
+
     struct Root: Decodable {
         let name: String?
         let id: String
