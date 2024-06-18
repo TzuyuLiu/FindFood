@@ -20,13 +20,33 @@ class MainTabBarController: UITabBarController {
 extension MainTabBarController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if let loginVC = viewController as? LoginViewController {
-            let googleLoginVM = LoginViewModel(delegate: loginVC, provider: GSAuthProvider(presentViewController: loginVC))
-            let facebookLoginVC = LoginViewModel(delegate: loginVC, provider: FBAuthProvider())
+            let googleProvider = GSAuthProvider(presentViewController: loginVC)
+            let facebookProvider = FBAuthProvider()
+            let googleLoginVM = LoginViewModel(delegate: loginVC, provider: googleProvider)
+            let facebookLoginVM = LoginViewModel(delegate: loginVC, provider: facebookProvider)
             loginVC.googleLogin = {
                 googleLoginVM.login()
             }
             loginVC.facebookLogin = {
-                facebookLoginVC.login()
+                facebookLoginVM.login()
+            }
+            loginVC.showMemberVC = { user in
+                let storyboard = UIStoryboard(name: "Main", bundle: .main)
+                let memberVC = storyboard.instantiateViewController(identifier: String(describing: MemberViewController.self)) { creator in
+                    let vc = MemberViewController(coder: creator, member: user)
+                    return vc
+                } as MemberViewController
+                memberVC.modalPresentationStyle = .fullScreen
+                memberVC.logout = {
+                    switch user.loginType {
+                    case .google:
+                        googleProvider.logoutUser()
+                    case .facebook:
+                        facebookProvider.logoutUser()
+                    }
+                    memberVC.dismiss(animated: true)
+                }
+                viewController.present(memberVC, animated: true)
             }
         }
     }

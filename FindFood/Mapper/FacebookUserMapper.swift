@@ -31,7 +31,7 @@ final class FacebookUserMapper {
         let picture: Picture
 
         var user: User {
-            return User(name: self.name ?? "", image: self.picture.data?.url, idToken: self.id)
+            return User(name: self.name ?? "", image: self.picture.data?.url, idToken: self.id, loginType: .facebook)
         }
     }
 

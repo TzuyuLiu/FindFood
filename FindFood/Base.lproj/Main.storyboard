@@ -129,7 +129,7 @@
         <!--Member View Controller-->
         <scene sceneID="6e5-6m-aZT">
             <objects>
-                <viewController id="Umi-6g-tw1" customClass="MemberViewController" customModule="FindFood" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemberViewController" id="Umi-6g-tw1" customClass="MemberViewController" customModule="FindFood" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="21Z-QP-MXb">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -151,18 +151,43 @@
                                     <action selector="tappedLogout" destination="Umi-6g-tw1" eventType="touchUpInside" id="sMQ-Sp-3Xx"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歡迎" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6G8-0b-U3A">
+                                <rect key="frame" x="17" y="83" width="359" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="7j2-Y6-v60"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GtI-qE-Ihh">
+                                <rect key="frame" x="136.66666666666666" y="155" width="119.99999999999997" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="8GJ-UI-xjt"/>
+                                    <constraint firstAttribute="width" secondItem="GtI-qE-Ihh" secondAttribute="height" id="CyD-mI-bRc"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="RI5-nd-zxa" firstAttribute="leading" secondItem="21Z-QP-MXb" secondAttribute="leading" constant="16" id="Xif-po-GDO"/>
+                            <constraint firstItem="GtI-qE-Ihh" firstAttribute="top" secondItem="6G8-0b-U3A" secondAttribute="bottom" constant="32" id="Z5d-PH-v5W"/>
+                            <constraint firstAttribute="trailing" secondItem="6G8-0b-U3A" secondAttribute="trailing" constant="17" id="ds5-Z2-Rfk"/>
                             <constraint firstAttribute="trailing" secondItem="RI5-nd-zxa" secondAttribute="trailing" constant="16" id="rGy-3x-oJW"/>
                             <constraint firstAttribute="bottom" secondItem="RI5-nd-zxa" secondAttribute="bottom" constant="32" id="uoh-ap-nun"/>
+                            <constraint firstItem="GtI-qE-Ihh" firstAttribute="centerX" secondItem="21Z-QP-MXb" secondAttribute="centerX" id="uzs-eA-Daa"/>
+                            <constraint firstItem="6G8-0b-U3A" firstAttribute="top" secondItem="21Z-QP-MXb" secondAttribute="topMargin" constant="24" id="vow-yM-nxZ"/>
+                            <constraint firstItem="6G8-0b-U3A" firstAttribute="leading" secondItem="21Z-QP-MXb" secondAttribute="leading" constant="17" id="wDu-t0-erk"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="userPhotoImageView" destination="GtI-qE-Ihh" id="WQl-Ib-e1m"/>
+                        <outlet property="welcomeLabel" destination="6G8-0b-U3A" id="Pmx-jD-g8u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A9o-oI-6i7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2573" y="1027"/>
+            <point key="canvasLocation" x="2573.2824427480914" y="1026.7605633802818"/>
         </scene>
     </scenes>
     <resources>

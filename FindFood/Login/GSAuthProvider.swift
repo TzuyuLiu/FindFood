@@ -29,7 +29,8 @@ final class GSAuthProvider: AuthProvider, LogoutProvider {
 
             completion(.success(User(name: profile.name,
                                      image: profile.imageURL(withDimension: 120),
-                                     idToken: token)))
+                                     idToken: token, 
+                                     loginType: .google)))
         }
     }
     

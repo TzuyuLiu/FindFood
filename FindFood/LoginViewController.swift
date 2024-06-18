@@ -10,6 +10,7 @@ import UIKit
 class LoginViewController: UIViewController {
     var googleLogin: (() -> Void)?
     var facebookLogin: (() -> Void)?
+    var showMemberVC: ((User) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: LoginViewModelDelegate {
     func didCreateUser(_ user: User) {
-        print("user:\(user)")
+        showMemberVC?(user)
     }
 
     func didReceiveErrorMessage(_ error: AuthProviderError) {
