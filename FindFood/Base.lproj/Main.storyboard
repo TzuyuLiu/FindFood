@@ -141,10 +141,10 @@
             </objects>
             <point key="canvasLocation" x="1746" y="-459"/>
         </scene>
-        <!--Logout View Controller-->
+        <!--Member View Controller-->
         <scene sceneID="6e5-6m-aZT">
             <objects>
-                <viewController id="Umi-6g-tw1" customClass="LogoutViewController" customModule="FindFood" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Umi-6g-tw1" customClass="MemberViewController" customModule="FindFood" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="21Z-QP-MXb">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

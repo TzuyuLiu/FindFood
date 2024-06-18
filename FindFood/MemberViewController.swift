@@ -1,5 +1,5 @@
 //
-//  LogoutViewController.swift
+//  MemberViewController.swift
 //  FindFood
 //
 //  Created by 劉子瑜-20001220 on 2024/6/18.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LogoutViewController: UIViewController {
+class MemberViewController: UIViewController {
     var logout: (() -> Void)?
 
     override func viewDidLoad() {
