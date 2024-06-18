@@ -8,16 +8,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--設定-->
-        <scene sceneID="lAk-FD-UHs">
+        <!--Login View Controller-->
+        <scene sceneID="ygc-UH-vah">
             <objects>
-                <viewController id="MLM-J4-48b" customClass="LoginViewController" customModule="FindFood" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fNb-nT-WsS">
+                <viewController id="w0n-yb-c37" customClass="LoginViewController" customModule="FindFood" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cRg-g3-l3P">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGd-pX-zEA">
-                                <rect key="frame" x="16" y="697" width="361" height="40"/>
+                                <rect key="frame" x="16" y="746" width="361" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="AAD-1p-HVS"/>
                                 </constraints>
@@ -34,7 +34,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="973-l7-6xH">
-                                <rect key="frame" x="16" y="642" width="361" height="35"/>
+                                <rect key="frame" x="16" y="691" width="361" height="35"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -44,22 +44,37 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="beZ-HK-z6c"/>
+                        <viewLayoutGuide key="safeArea" id="Kg4-RF-Si2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="pGd-pX-zEA" firstAttribute="top" secondItem="973-l7-6xH" secondAttribute="bottom" constant="20" id="FhJ-zr-eVq"/>
-                            <constraint firstItem="973-l7-6xH" firstAttribute="trailing" secondItem="pGd-pX-zEA" secondAttribute="trailing" id="PEc-Xr-elm"/>
-                            <constraint firstItem="973-l7-6xH" firstAttribute="leading" secondItem="pGd-pX-zEA" secondAttribute="leading" id="bJo-B7-icD"/>
-                            <constraint firstItem="beZ-HK-z6c" firstAttribute="bottom" secondItem="pGd-pX-zEA" secondAttribute="bottom" constant="32" id="k2c-e7-gfW"/>
-                            <constraint firstItem="pGd-pX-zEA" firstAttribute="leading" secondItem="beZ-HK-z6c" secondAttribute="leading" constant="16" id="qOx-h5-5Zc"/>
-                            <constraint firstItem="beZ-HK-z6c" firstAttribute="trailing" secondItem="pGd-pX-zEA" secondAttribute="trailing" constant="16" id="zH3-VN-WfQ"/>
+                            <constraint firstItem="Kg4-RF-Si2" firstAttribute="bottom" secondItem="pGd-pX-zEA" secondAttribute="bottom" constant="32" id="Fqo-Bs-83X"/>
+                            <constraint firstItem="pGd-pX-zEA" firstAttribute="leading" secondItem="Kg4-RF-Si2" secondAttribute="leading" constant="16" id="KXg-Bh-i9a"/>
+                            <constraint firstItem="973-l7-6xH" firstAttribute="trailing" secondItem="pGd-pX-zEA" secondAttribute="trailing" id="rdW-Kz-Odc"/>
+                            <constraint firstItem="973-l7-6xH" firstAttribute="leading" secondItem="pGd-pX-zEA" secondAttribute="leading" id="uRq-sC-4Y9"/>
+                            <constraint firstItem="Kg4-RF-Si2" firstAttribute="trailing" secondItem="pGd-pX-zEA" secondAttribute="trailing" constant="16" id="vsN-99-Mpr"/>
+                            <constraint firstItem="pGd-pX-zEA" firstAttribute="top" secondItem="973-l7-6xH" secondAttribute="bottom" constant="20" id="zfm-V4-fwP"/>
                         </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JzL-MW-g5Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2775" y="1027"/>
+        </scene>
+        <!--設定-->
+        <scene sceneID="lAk-FD-UHs">
+            <objects>
+                <viewController id="MLM-J4-48b" customClass="LoginViewController" customModule="FindFood" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fNb-nT-WsS">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="beZ-HK-z6c"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="設定" image="gearshape" catalog="system" id="hJz-U4-AC9"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q0B-N0-n9S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1746" y="1027"/>
+            <point key="canvasLocation" x="1745.8015267175572" y="1026.7605633802818"/>
         </scene>
         <!--搜尋-->
         <scene sceneID="woG-0j-8nD">
@@ -126,6 +141,44 @@
             </objects>
             <point key="canvasLocation" x="1746" y="-459"/>
         </scene>
+        <!--Logout View Controller-->
+        <scene sceneID="6e5-6m-aZT">
+            <objects>
+                <viewController id="Umi-6g-tw1" customClass="LogoutViewController" customModule="FindFood" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="21Z-QP-MXb">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RI5-nd-zxa">
+                                <rect key="frame" x="16" y="780" width="361" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="HuB-R6-QFq"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="登出"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tappedLogout" destination="Umi-6g-tw1" eventType="touchUpInside" id="sMQ-Sp-3Xx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RI5-nd-zxa" firstAttribute="leading" secondItem="21Z-QP-MXb" secondAttribute="leading" constant="16" id="Xif-po-GDO"/>
+                            <constraint firstAttribute="trailing" secondItem="RI5-nd-zxa" secondAttribute="trailing" constant="16" id="rGy-3x-oJW"/>
+                            <constraint firstAttribute="bottom" secondItem="RI5-nd-zxa" secondAttribute="bottom" constant="32" id="uoh-ap-nun"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A9o-oI-6i7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3579" y="1027"/>
+        </scene>
     </scenes>
     <resources>
         <image name="gearshape" catalog="system" width="128" height="123"/>
@@ -136,7 +189,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
