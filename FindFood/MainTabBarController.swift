@@ -19,7 +19,9 @@ class MainTabBarController: UITabBarController {
 
 extension MainTabBarController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        if let loginVC = viewController as? LoginViewController {
+        if let nav = viewController as? UINavigationController {
+            let storyboard = UIStoryboard(name: "Main", bundle: .main)
+            let loginVC = storyboard.instantiateViewController(identifier: String(describing: LoginViewController.self)) as LoginViewController
             let googleProvider = GSAuthProvider(presentViewController: loginVC)
             let facebookProvider = FBAuthProvider()
             let googleLoginVM = LoginViewModel(delegate: loginVC, provider: googleProvider)
@@ -31,7 +33,6 @@ extension MainTabBarController: UITabBarControllerDelegate {
                 facebookLoginVM.login()
             }
             loginVC.showMemberVC = { user in
-                let storyboard = UIStoryboard(name: "Main", bundle: .main)
                 let memberVC = storyboard.instantiateViewController(identifier: String(describing: MemberViewController.self)) { creator in
                     let vc = MemberViewController(coder: creator, member: user)
                     return vc
@@ -44,10 +45,12 @@ extension MainTabBarController: UITabBarControllerDelegate {
                     case .facebook:
                         facebookProvider.logoutUser()
                     }
-                    memberVC.dismiss(animated: true)
+                    nav.popViewController(animated: true)
                 }
-                viewController.present(memberVC, animated: true)
+                nav.pushViewController(memberVC, animated: true)
             }
+            nav.setNavigationBarHidden(true, animated: false)
+            nav.setViewControllers([loginVC], animated: false)
         }
     }
 }

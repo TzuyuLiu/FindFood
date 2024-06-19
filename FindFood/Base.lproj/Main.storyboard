@@ -11,49 +11,12 @@
         <!--設定-->
         <scene sceneID="lAk-FD-UHs">
             <objects>
-                <viewController id="MLM-J4-48b" customClass="LoginViewController" customModule="FindFood" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fNb-nT-WsS">
+                <viewController id="MLM-J4-48b" customClass="UINavigationController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bi9-IP-gc4">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGd-pX-zEA">
-                                <rect key="frame" x="16" y="697" width="361" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="AAD-1p-HVS"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="google" title="使用Google登入"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="tappedGoogleLogin" destination="MLM-J4-48b" eventType="touchUpInside" id="OWl-8c-huQ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="973-l7-6xH">
-                                <rect key="frame" x="16" y="642" width="361" height="35"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="使用Facebook登入"/>
-                                <connections>
-                                    <action selector="tappedFBLogin" destination="MLM-J4-48b" eventType="touchUpInside" id="5lb-2V-IfC"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="beZ-HK-z6c"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <viewLayoutGuide key="safeArea" id="6H8-zi-AwR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="beZ-HK-z6c" firstAttribute="trailing" secondItem="pGd-pX-zEA" secondAttribute="trailing" constant="16" id="F9v-Tx-VwA"/>
-                            <constraint firstItem="973-l7-6xH" firstAttribute="leading" secondItem="pGd-pX-zEA" secondAttribute="leading" id="SNz-Q9-H9L"/>
-                            <constraint firstItem="973-l7-6xH" firstAttribute="trailing" secondItem="pGd-pX-zEA" secondAttribute="trailing" id="UPw-tc-2Wv"/>
-                            <constraint firstItem="pGd-pX-zEA" firstAttribute="leading" secondItem="beZ-HK-z6c" secondAttribute="leading" constant="16" id="YMZ-6J-6DW"/>
-                            <constraint firstItem="beZ-HK-z6c" firstAttribute="bottom" secondItem="pGd-pX-zEA" secondAttribute="bottom" constant="32" id="pgX-Zm-Fm9"/>
-                            <constraint firstItem="pGd-pX-zEA" firstAttribute="top" secondItem="973-l7-6xH" secondAttribute="bottom" constant="20" id="v5O-uz-zdw"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="設定" image="gearshape" catalog="system" id="hJz-U4-AC9"/>
                 </viewController>
@@ -126,6 +89,59 @@
             </objects>
             <point key="canvasLocation" x="1746" y="-459"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="wwE-Mv-zDC">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="PSW-Hb-9fc" customClass="LoginViewController" customModule="FindFood" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kYH-SW-WRp">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGd-pX-zEA">
+                                <rect key="frame" x="16" y="746" width="361" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="AAD-1p-HVS"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="google" title="使用Google登入"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tappedGoogleLogin" destination="PSW-Hb-9fc" eventType="touchUpInside" id="fg9-lg-7UB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="973-l7-6xH">
+                                <rect key="frame" x="16" y="691" width="361" height="35"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="使用Facebook登入"/>
+                                <connections>
+                                    <action selector="tappedFBLogin" destination="PSW-Hb-9fc" eventType="touchUpInside" id="hm4-Rs-EfB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gO8-QT-hCD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pGd-pX-zEA" firstAttribute="leading" secondItem="gO8-QT-hCD" secondAttribute="leading" constant="16" id="0aY-j8-hMQ"/>
+                            <constraint firstItem="pGd-pX-zEA" firstAttribute="top" secondItem="973-l7-6xH" secondAttribute="bottom" constant="20" id="JWm-gp-Znx"/>
+                            <constraint firstItem="973-l7-6xH" firstAttribute="trailing" secondItem="pGd-pX-zEA" secondAttribute="trailing" id="Pw2-EV-mY6"/>
+                            <constraint firstItem="gO8-QT-hCD" firstAttribute="bottom" secondItem="pGd-pX-zEA" secondAttribute="bottom" constant="32" id="gOU-Gs-EkH"/>
+                            <constraint firstItem="973-l7-6xH" firstAttribute="leading" secondItem="pGd-pX-zEA" secondAttribute="leading" id="jJU-dn-yIx"/>
+                            <constraint firstItem="gO8-QT-hCD" firstAttribute="trailing" secondItem="pGd-pX-zEA" secondAttribute="trailing" constant="16" id="yP3-Xd-GcB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="1Ml-Au-O7T"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6qW-np-ByA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2465" y="1027"/>
+        </scene>
         <!--Member View Controller-->
         <scene sceneID="6e5-6m-aZT">
             <objects>
@@ -135,7 +151,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RI5-nd-zxa">
-                                <rect key="frame" x="16" y="780" width="361" height="40"/>
+                                <rect key="frame" x="16" y="746" width="361" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="HuB-R6-QFq"/>
                                 </constraints>
@@ -168,13 +184,14 @@
                                 </constraints>
                             </imageView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="b4e-2m-47O"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="RI5-nd-zxa" firstAttribute="leading" secondItem="21Z-QP-MXb" secondAttribute="leading" constant="16" id="Xif-po-GDO"/>
                             <constraint firstItem="GtI-qE-Ihh" firstAttribute="top" secondItem="6G8-0b-U3A" secondAttribute="bottom" constant="32" id="Z5d-PH-v5W"/>
                             <constraint firstAttribute="trailing" secondItem="6G8-0b-U3A" secondAttribute="trailing" constant="17" id="ds5-Z2-Rfk"/>
                             <constraint firstAttribute="trailing" secondItem="RI5-nd-zxa" secondAttribute="trailing" constant="16" id="rGy-3x-oJW"/>
-                            <constraint firstAttribute="bottom" secondItem="RI5-nd-zxa" secondAttribute="bottom" constant="32" id="uoh-ap-nun"/>
+                            <constraint firstItem="b4e-2m-47O" firstAttribute="bottom" secondItem="RI5-nd-zxa" secondAttribute="bottom" constant="32" id="uoh-ap-nun"/>
                             <constraint firstItem="GtI-qE-Ihh" firstAttribute="centerX" secondItem="21Z-QP-MXb" secondAttribute="centerX" id="uzs-eA-Daa"/>
                             <constraint firstItem="6G8-0b-U3A" firstAttribute="top" secondItem="21Z-QP-MXb" secondAttribute="topMargin" constant="24" id="vow-yM-nxZ"/>
                             <constraint firstItem="6G8-0b-U3A" firstAttribute="leading" secondItem="21Z-QP-MXb" secondAttribute="leading" constant="17" id="wDu-t0-erk"/>
@@ -187,7 +204,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A9o-oI-6i7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2573.2824427480914" y="1026.7605633802818"/>
+            <point key="canvasLocation" x="3173" y="1027"/>
         </scene>
     </scenes>
     <resources>
