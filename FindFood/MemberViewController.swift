@@ -25,7 +25,7 @@ final class MemberViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        welcomeLabel.text = "歡迎，\(member.name)"
     }
 
     @IBAction func tappedLogout() {
