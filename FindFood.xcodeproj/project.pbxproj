@@ -19,6 +19,7 @@
 		6483533B2C1C0EFD009B4C9B /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 6483533A2C1C0EFD009B4C9B /* FacebookLogin */; };
 		64D264AF2C21259F00A180D6 /* FacebookUserMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D264AE2C21259F00A180D6 /* FacebookUserMapper.swift */; };
 		64D264B12C212E2500A180D6 /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D264B02C212E2500A180D6 /* MemberViewController.swift */; };
+		64D264B42C228B1600A180D6 /* UserCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D264B32C228B1600A180D6 /* UserCache.swift */; };
 		64EB52F52C1A958F0043D5E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB52F42C1A958F0043D5E6 /* AppDelegate.swift */; };
 		64EB52F72C1A958F0043D5E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB52F62C1A958F0043D5E6 /* SceneDelegate.swift */; };
 		64EB52F92C1A958F0043D5E6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB52F82C1A958F0043D5E6 /* LoginViewController.swift */; };
@@ -58,6 +59,7 @@
 		648353382C1C0E56009B4C9B /* FindFood.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FindFood.entitlements; sourceTree = "<group>"; };
 		64D264AE2C21259F00A180D6 /* FacebookUserMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookUserMapper.swift; sourceTree = "<group>"; };
 		64D264B02C212E2500A180D6 /* MemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
+		64D264B32C228B1600A180D6 /* UserCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCache.swift; sourceTree = "<group>"; };
 		64EB52F12C1A958F0043D5E6 /* FindFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64EB52F42C1A958F0043D5E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64EB52F62C1A958F0043D5E6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,20 +103,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		648353212C1AD1E1009B4C9B /* Infrastructure */ = {
-			isa = PBXGroup;
-			children = (
-				6483531F2C1ACA0F009B4C9B /* User.swift */,
-			);
-			path = Infrastructure;
-			sourceTree = "<group>";
-		};
 		648353222C1AD203009B4C9B /* Feature */ = {
 			isa = PBXGroup;
 			children = (
 				6483531D2C1ABFCF009B4C9B /* AuthProvider.swift */,
 				648353302C1AE7BF009B4C9B /* LoginViewModel.swift */,
 				648353332C1AE9BD009B4C9B /* LogoutProvider.swift */,
+				64D264B32C228B1600A180D6 /* UserCache.swift */,
+				6483531F2C1ACA0F009B4C9B /* User.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -134,6 +130,13 @@
 				64D264AE2C21259F00A180D6 /* FacebookUserMapper.swift */,
 			);
 			path = Mapper;
+			sourceTree = "<group>";
+		};
+		64D264B22C228A8C00A180D6 /* UserCache */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UserCache;
 			sourceTree = "<group>";
 		};
 		64EB52E82C1A958F0043D5E6 = {
@@ -159,6 +162,7 @@
 		64EB52F32C1A958F0043D5E6 /* FindFood */ = {
 			isa = PBXGroup;
 			children = (
+				64D264B22C228A8C00A180D6 /* UserCache */,
 				648353382C1C0E56009B4C9B /* FindFood.entitlements */,
 				64EB52F42C1A958F0043D5E6 /* AppDelegate.swift */,
 				64EB52F62C1A958F0043D5E6 /* SceneDelegate.swift */,
@@ -170,7 +174,6 @@
 				64EB52FF2C1A95900043D5E6 /* LaunchScreen.storyboard */,
 				64EB53022C1A95900043D5E6 /* Info.plist */,
 				648353222C1AD203009B4C9B /* Feature */,
-				648353212C1AD1E1009B4C9B /* Infrastructure */,
 				6483532B2C1ADD39009B4C9B /* Login */,
 				64D264AD2C21258000A180D6 /* Mapper */,
 			);
@@ -346,6 +349,7 @@
 				64EB52F72C1A958F0043D5E6 /* SceneDelegate.swift in Sources */,
 				64D264B12C212E2500A180D6 /* MemberViewController.swift in Sources */,
 				648353312C1AE7BF009B4C9B /* LoginViewModel.swift in Sources */,
+				64D264B42C228B1600A180D6 /* UserCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
