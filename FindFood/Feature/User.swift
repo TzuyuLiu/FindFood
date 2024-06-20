@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum LoginType {
+enum LoginType: String {
     case google
     case facebook
 }
