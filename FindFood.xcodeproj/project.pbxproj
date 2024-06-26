@@ -29,19 +29,10 @@
 		64EB52FE2C1A95900043D5E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64EB52FD2C1A95900043D5E6 /* Assets.xcassets */; };
 		64EB53012C1A95900043D5E6 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 64EB53002C1A95900043D5E6 /* Base */; };
 		64EB530C2C1A95900043D5E6 /* CoreDataUserCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB530B2C1A95900043D5E6 /* CoreDataUserCaseTests.swift */; };
-		64EB53162C1A95900043D5E6 /* FindFoodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB53152C1A95900043D5E6 /* FindFoodUITests.swift */; };
-		64EB53182C1A95900043D5E6 /* FindFoodUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB53172C1A95900043D5E6 /* FindFoodUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		64EB53082C1A95900043D5E6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 64EB52E92C1A958F0043D5E6 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 64EB52F02C1A958F0043D5E6;
-			remoteInfo = FindFood;
-		};
-		64EB53122C1A95900043D5E6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 64EB52E92C1A958F0043D5E6 /* Project object */;
 			proxyType = 1;
@@ -74,9 +65,6 @@
 		64EB53022C1A95900043D5E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64EB53072C1A95900043D5E6 /* FindFoodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindFoodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64EB530B2C1A95900043D5E6 /* CoreDataUserCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUserCaseTests.swift; sourceTree = "<group>"; };
-		64EB53112C1A95900043D5E6 /* FindFoodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindFoodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		64EB53152C1A95900043D5E6 /* FindFoodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFoodUITests.swift; sourceTree = "<group>"; };
-		64EB53172C1A95900043D5E6 /* FindFoodUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFoodUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,13 +79,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		64EB53042C1A95900043D5E6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		64EB530E2C1A95900043D5E6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -149,7 +130,6 @@
 			children = (
 				64EB52F32C1A958F0043D5E6 /* FindFood */,
 				64EB530A2C1A95900043D5E6 /* FindFoodTests */,
-				64EB53142C1A95900043D5E6 /* FindFoodUITests */,
 				64EB52F22C1A958F0043D5E6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -159,7 +139,6 @@
 			children = (
 				64EB52F12C1A958F0043D5E6 /* FindFood.app */,
 				64EB53072C1A95900043D5E6 /* FindFoodTests.xctest */,
-				64EB53112C1A95900043D5E6 /* FindFoodUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,15 +171,6 @@
 				64EB530B2C1A95900043D5E6 /* CoreDataUserCaseTests.swift */,
 			);
 			path = FindFoodTests;
-			sourceTree = "<group>";
-		};
-		64EB53142C1A95900043D5E6 /* FindFoodUITests */ = {
-			isa = PBXGroup;
-			children = (
-				64EB53152C1A95900043D5E6 /* FindFoodUITests.swift */,
-				64EB53172C1A95900043D5E6 /* FindFoodUITestsLaunchTests.swift */,
-			);
-			path = FindFoodUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,24 +216,6 @@
 			productReference = 64EB53072C1A95900043D5E6 /* FindFoodTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		64EB53102C1A95900043D5E6 /* FindFoodUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 64EB53212C1A95900043D5E6 /* Build configuration list for PBXNativeTarget "FindFoodUITests" */;
-			buildPhases = (
-				64EB530D2C1A95900043D5E6 /* Sources */,
-				64EB530E2C1A95900043D5E6 /* Frameworks */,
-				64EB530F2C1A95900043D5E6 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				64EB53132C1A95900043D5E6 /* PBXTargetDependency */,
-			);
-			name = FindFoodUITests;
-			productName = FindFoodUITests;
-			productReference = 64EB53112C1A95900043D5E6 /* FindFoodUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -278,10 +230,6 @@
 						CreatedOnToolsVersion = 15.3;
 					};
 					64EB53062C1A95900043D5E6 = {
-						CreatedOnToolsVersion = 15.3;
-						TestTargetID = 64EB52F02C1A958F0043D5E6;
-					};
-					64EB53102C1A95900043D5E6 = {
 						CreatedOnToolsVersion = 15.3;
 						TestTargetID = 64EB52F02C1A958F0043D5E6;
 					};
@@ -306,7 +254,6 @@
 			targets = (
 				64EB52F02C1A958F0043D5E6 /* FindFood */,
 				64EB53062C1A95900043D5E6 /* FindFoodTests */,
-				64EB53102C1A95900043D5E6 /* FindFoodUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -323,13 +270,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		64EB53052C1A95900043D5E6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		64EB530F2C1A95900043D5E6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -369,15 +309,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		64EB530D2C1A95900043D5E6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				64EB53182C1A95900043D5E6 /* FindFoodUITestsLaunchTests.swift in Sources */,
-				64EB53162C1A95900043D5E6 /* FindFoodUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -385,11 +316,6 @@
 			isa = PBXTargetDependency;
 			target = 64EB52F02C1A958F0043D5E6 /* FindFood */;
 			targetProxy = 64EB53082C1A95900043D5E6 /* PBXContainerItemProxy */;
-		};
-		64EB53132C1A95900043D5E6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 64EB52F02C1A958F0043D5E6 /* FindFood */;
-			targetProxy = 64EB53122C1A95900043D5E6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -630,42 +556,6 @@
 			};
 			name = Release;
 		};
-		64EB53222C1A95900043D5E6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QCS2J62LCS;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = liu.tzu.yu.practice.FindFoodUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = FindFood;
-			};
-			name = Debug;
-		};
-		64EB53232C1A95900043D5E6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QCS2J62LCS;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = liu.tzu.yu.practice.FindFoodUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = FindFood;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -692,15 +582,6 @@
 			buildConfigurations = (
 				64EB531F2C1A95900043D5E6 /* Debug */,
 				64EB53202C1A95900043D5E6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		64EB53212C1A95900043D5E6 /* Build configuration list for PBXNativeTarget "FindFoodUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				64EB53222C1A95900043D5E6 /* Debug */,
-				64EB53232C1A95900043D5E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
