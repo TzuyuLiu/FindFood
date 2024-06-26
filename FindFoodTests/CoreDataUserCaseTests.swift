@@ -18,6 +18,10 @@ class LocalUserLoader {
     func loginSuccess(_ user: User) {
         store.save(user)
     }
+
+    func loginFail() {
+
+    }
 }
 
 class UserStore {
@@ -43,6 +47,15 @@ final class CoreDataUserCaseTests: XCTestCase {
         sut.loginSuccess(makeUser())
 
         XCTAssertNotNil(store.user)
+    }
+
+    func test_save_requestLoginFail() {
+        let store = UserStore()
+        let sut = LocalUserLoader(store: store)
+
+        sut.loginFail()
+
+        XCTAssertNil(store.user)
     }
 
     // MARK: Helper
