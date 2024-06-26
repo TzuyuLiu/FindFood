@@ -25,7 +25,7 @@ class LocalUserLoader {
     }
 
     func logout() throws {
-        guard let user = store.user else {
+        guard store.user != nil else {
             throw NSError(domain: "Doesn't have a user.", code: 998)
         }
     }
