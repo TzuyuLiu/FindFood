@@ -58,7 +58,12 @@ final class CoreDataUserCaseTests: XCTestCase {
     // MARK: Helper
     private func makeSUT() -> (LocalUserLoader, UserStore) {
         let store = UserStore()
-        return (LocalUserLoader(store: store), store)
+        let sut = LocalUserLoader(store: store)
+
+        trackForMemoryLeaks(store)
+        trackForMemoryLeaks(sut)
+
+        return (sut, store)
     }
 
     private func makeUser() -> User {
