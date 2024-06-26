@@ -15,12 +15,13 @@ class LocalUserLoader {
         self.store = store
     }
 
-    func loginSuccess(_ user: User) {
-        store.save(user)
-    }
-
-    func loginFail() {
-
+    func login(_ result: Result<User, Error>) {
+        switch result {
+        case .success(let user):
+            store.save(user)
+        case .failure(let failure):
+            ()
+        }
     }
 }
 
@@ -42,7 +43,7 @@ final class CoreDataUserCaseTests: XCTestCase {
     func test_save_requestLoginSuccess() {
         let (sut,store) = makeSUT()
 
-        sut.loginSuccess(makeUser())
+        sut.login(.success(makeUser()))
 
         XCTAssertNotNil(store.user)
     }
@@ -50,7 +51,7 @@ final class CoreDataUserCaseTests: XCTestCase {
     func test_save_requestLoginFail() {
         let (sut,store) = makeSUT()
 
-        sut.loginFail()
+        sut.login(.failure(makeError()))
 
         XCTAssertNil(store.user)
     }
@@ -71,5 +72,9 @@ final class CoreDataUserCaseTests: XCTestCase {
                     image: nil,
                     idToken: "12345",
                     loginType: .facebook)
+    }
+
+    private func makeError() -> Error {
+        return NSError(domain: "An Error", code: 999)
     }
 }
