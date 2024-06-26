@@ -35,13 +35,13 @@ class UserStore {
 
 final class CoreDataUserCaseTests: XCTestCase {
     func test_init_doseNotHaveAUserUponCreation() {
-        let (_,store) = makeSUT()
+        let (_, store) = makeSUT()
 
         XCTAssertNil(store.user)
     }
 
     func test_save_requestLoginSuccess() {
-        let (sut,store) = makeSUT()
+        let (sut, store) = makeSUT()
 
         sut.login(.success(makeUser()))
 
@@ -49,7 +49,7 @@ final class CoreDataUserCaseTests: XCTestCase {
     }
 
     func test_save_requestLoginFail() {
-        let (sut,store) = makeSUT()
+        let (sut, store) = makeSUT()
 
         sut.login(.failure(makeError()))
 
