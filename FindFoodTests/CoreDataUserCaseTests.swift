@@ -34,15 +34,13 @@ class UserStore {
 
 final class CoreDataUserCaseTests: XCTestCase {
     func test_init_doseNotHaveAUserUponCreation() {
-        let store = UserStore()
-        _ = LocalUserLoader(store: store)
+        let (_,store) = makeSUT()
 
         XCTAssertNil(store.user)
     }
 
     func test_save_requestLoginSuccess() {
-        let store = UserStore()
-        let sut = LocalUserLoader(store: store)
+        let (sut,store) = makeSUT()
 
         sut.loginSuccess(makeUser())
 
@@ -50,8 +48,7 @@ final class CoreDataUserCaseTests: XCTestCase {
     }
 
     func test_save_requestLoginFail() {
-        let store = UserStore()
-        let sut = LocalUserLoader(store: store)
+        let (sut,store) = makeSUT()
 
         sut.loginFail()
 
@@ -59,6 +56,11 @@ final class CoreDataUserCaseTests: XCTestCase {
     }
 
     // MARK: Helper
+    private func makeSUT() -> (LocalUserLoader, UserStore) {
+        let store = UserStore()
+        return (LocalUserLoader(store: store), store)
+    }
+
     private func makeUser() -> User {
         return User(name: "Andy",
                     image: nil,
