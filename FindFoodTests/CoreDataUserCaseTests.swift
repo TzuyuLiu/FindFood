@@ -28,14 +28,20 @@ class LocalUserLoader {
         guard store.user != nil else {
             throw NSError(domain: "Doesn't have a user.", code: 998)
         }
+
+        store.deleteUser()
     }
 }
 
 class UserStore {
-    var user: User?
+    private(set) var user: User?
 
     func save(_ user: User) {
         self.user = user
+    }
+
+    func deleteUser() {
+        self.user = nil
     }
 }
 
@@ -66,6 +72,15 @@ final class CoreDataUserCaseTests: XCTestCase {
         let (sut, _) = makeSUT()
 
         XCTAssertThrowsError(try sut.logout())
+    }
+
+    func test_delete_requestLogoutUponUserStoreHasAUser() {
+        let (sut, store) = makeSUT()
+        sut.login(.success(makeUser()))
+
+        try? sut.logout()
+
+        XCTAssertNil(store.user)
     }
 
     // MARK: Helper
