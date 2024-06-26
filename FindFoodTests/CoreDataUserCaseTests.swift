@@ -8,6 +8,21 @@
 import XCTest
 @testable import FindFood
 
-final class CoreDataUserCaseTests: XCTestCase {
+class LocalUserLoader {
+    init(store: UserStore) {
 
+    }
+}
+
+class UserStore {
+    var user: User?
+}
+
+final class CoreDataUserCaseTests: XCTestCase {
+    func test_init_doseNotHaveAUserUponCreation() {
+        let store = UserStore()
+        _ = LocalUserLoader(store: store)
+
+        XCTAssertNil(store.user)
+    }
 }
