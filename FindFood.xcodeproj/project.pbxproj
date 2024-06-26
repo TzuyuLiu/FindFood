@@ -28,7 +28,7 @@
 		64EB52FC2C1A958F0043D5E6 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 64EB52FB2C1A958F0043D5E6 /* Base */; };
 		64EB52FE2C1A95900043D5E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64EB52FD2C1A95900043D5E6 /* Assets.xcassets */; };
 		64EB53012C1A95900043D5E6 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 64EB53002C1A95900043D5E6 /* Base */; };
-		64EB530C2C1A95900043D5E6 /* FindFoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB530B2C1A95900043D5E6 /* FindFoodTests.swift */; };
+		64EB530C2C1A95900043D5E6 /* CoreDataUserCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB530B2C1A95900043D5E6 /* CoreDataUserCaseTests.swift */; };
 		64EB53162C1A95900043D5E6 /* FindFoodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB53152C1A95900043D5E6 /* FindFoodUITests.swift */; };
 		64EB53182C1A95900043D5E6 /* FindFoodUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB53172C1A95900043D5E6 /* FindFoodUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
@@ -73,7 +73,7 @@
 		64EB53002C1A95900043D5E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		64EB53022C1A95900043D5E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64EB53072C1A95900043D5E6 /* FindFoodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindFoodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		64EB530B2C1A95900043D5E6 /* FindFoodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFoodTests.swift; sourceTree = "<group>"; };
+		64EB530B2C1A95900043D5E6 /* CoreDataUserCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUserCaseTests.swift; sourceTree = "<group>"; };
 		64EB53112C1A95900043D5E6 /* FindFoodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindFoodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64EB53152C1A95900043D5E6 /* FindFoodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFoodUITests.swift; sourceTree = "<group>"; };
 		64EB53172C1A95900043D5E6 /* FindFoodUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFoodUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 		64EB530A2C1A95900043D5E6 /* FindFoodTests */ = {
 			isa = PBXGroup;
 			children = (
-				64EB530B2C1A95900043D5E6 /* FindFoodTests.swift */,
+				64EB530B2C1A95900043D5E6 /* CoreDataUserCaseTests.swift */,
 			);
 			path = FindFoodTests;
 			sourceTree = "<group>";
@@ -365,7 +365,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64EB530C2C1A95900043D5E6 /* FindFoodTests.swift in Sources */,
+				64EB530C2C1A95900043D5E6 /* CoreDataUserCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

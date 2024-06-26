@@ -1,6 +1,6 @@
 //
-//  FindFoodTests.swift
-//  FindFoodTests
+//  CoreDataUserCaseTests.swift
+//  CoreDataUserCaseTests
 //
 //  Created by 劉子瑜-20001220 on 2024/6/13.
 //
@@ -8,7 +8,7 @@
 import XCTest
 @testable import FindFood
 
-final class FindFoodTests: XCTestCase {
+final class CoreDataUserCaseTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
