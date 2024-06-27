@@ -35,18 +35,19 @@ class LocalUserLoader {
         store.deleteUser()
     }
 
-    func load() {
-        store.retrieve()
+    func load(completion: @escaping (Error?) -> Void) {
+        store.retrieve(completion: completion)
     }
 }
 
 protocol UserStore {
     var user: User? { get }
     typealias SaveCompletions = (Error?) -> Void
+    typealias RetrieveCompletions = (Error?) -> Void
 
     func save(_ user: User, completion: @escaping SaveCompletions)
     func deleteUser()
-    func retrieve()
+    func retrieve(completion: @escaping RetrieveCompletions)
 }
 
 class UserStoreSpy: UserStore {
@@ -58,6 +59,8 @@ class UserStoreSpy: UserStore {
 
     private(set) var user: User?
     private var saveCompletion: SaveCompletions?
+    private var retrieveCompletion: RetrieveCompletions?
+
     private(set) var receivedMessages = [ReceivedMessage]()
 
     typealias SaveCompletions = (Error?) -> Void
@@ -73,7 +76,8 @@ class UserStoreSpy: UserStore {
         receivedMessages.append(.delete)
     }
 
-    func retrieve() {
+    func retrieve(completion: @escaping RetrieveCompletions) {
+        retrieveCompletion = completion
         receivedMessages.append(.retrieve)
     }
 
@@ -83,6 +87,10 @@ class UserStoreSpy: UserStore {
 
     func completeSaveSuccessfully() {
         saveCompletion?(nil)
+    }
+
+    func completeRetrieval(with error: Error) {
+        retrieveCompletion?(error)
     }
 }
 
@@ -157,9 +165,26 @@ final class CoreDataUserCaseTests: XCTestCase {
     func test_load_requestsCoreDataRetriveal() {
         let (sut, store) = makeSUT()
 
-        sut.load()
+        sut.load() { _ in }
 
         XCTAssertEqual(store.receivedMessages, [.retrieve])
+    }
+
+    func test_load_failsOnRetrievalError() {
+        let (sut, store) = makeSUT()
+        let retrievalError = makeAnyError()
+        let exp = expectation(description: "Wait for load completion")
+
+        var receivedError: Error?
+        sut.load() { error in
+            receivedError = error
+            exp.fulfill()
+        }
+
+        store.completeRetrieval(with: retrievalError)
+
+        wait(for: [exp], timeout: 1.0)
+        XCTAssertEqual(receivedError as? NSError, retrievalError)
     }
 
     // MARK: Helper
