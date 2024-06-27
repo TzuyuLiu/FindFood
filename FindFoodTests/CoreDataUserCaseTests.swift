@@ -74,50 +74,23 @@ final class CoreDataUserCaseTests: XCTestCase {
 
     func test_save_requestLoginSuccessButSaveFail() {
         let (sut, store) = makeSUT()
-        let exp = expectation(description: "Wait for save completion")
-        var receivedError: Error?
         let saveError = makeAnyError()
-
-        sut.login(.success(makeUser())) { error in
-            receivedError = error
-            exp.fulfill()
+        expect(sut, loginResult: .success(makeUser()), toCompleteWithError: saveError) {
+            store.completeSave(with: saveError)
         }
-
-        store.completeSave(with: saveError)
-
-        wait(for: [exp], timeout: 1.0)
-        XCTAssertEqual(receivedError as NSError?, saveError)
     }
 
     func test_save_requestLoginSuccessAndSaveSuccess() {
         let (sut, store) = makeSUT()
-        let exp = expectation(description: "Wait for save completion")
-        var receivedError: Error?
-
-        sut.login(.success(makeUser())) { error in
-            receivedError = error
-            exp.fulfill()
+        expect(sut, loginResult: .success(makeUser()), toCompleteWithError: nil) {
+            store.completeSaveSuccessfully()
         }
-
-        store.completeSaveSuccessfully()
-
-        wait(for: [exp], timeout: 1.0)
-        XCTAssertNil(receivedError)
     }
 
     func test_save_requestLoginFail() {
         let (sut, _) = makeSUT()
-        let exp = expectation(description: "Wait for save completion")
-        var receivedError: Error?
         let loginError = makeAnyError()
-
-        sut.login(.failure(loginError)) { error in
-            receivedError = error
-            exp.fulfill()
-        }
-
-        wait(for: [exp], timeout: 1.0)
-        XCTAssertEqual(receivedError as NSError?, loginError)
+        expect(sut, loginResult: .failure(loginError), toCompleteWithError: loginError) { }
     }
 
     func test_delete_requestLogoutUponDoesnotHaveAUser() {
@@ -136,6 +109,22 @@ final class CoreDataUserCaseTests: XCTestCase {
     }
 
     // MARK: Helper
+
+    private func expect(_ sut: LocalUserLoader, loginResult expectedLoginResult: Result<User, any Error>, toCompleteWithError expectedError: NSError?, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+        let exp = expectation(description: "Wait for save completion")
+        var receivedError: Error?
+
+        sut.login(expectedLoginResult) { error in
+            receivedError = error
+            exp.fulfill()
+        }
+
+        action()
+        wait(for: [exp], timeout: 1.0)
+
+        XCTAssertEqual(receivedError as NSError?, expectedError, file: file, line: line)
+    }
+
     private func makeSUT() -> (LocalUserLoader, UserStore) {
         let store = UserStore()
         let sut = LocalUserLoader(store: store)
