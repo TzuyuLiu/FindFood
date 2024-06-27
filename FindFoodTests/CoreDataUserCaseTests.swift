@@ -22,7 +22,7 @@ class LocalUserLoader {
                 completion(error)
             }
         case .failure(let failure):
-            ()
+            completion(failure)
         }
     }
 
@@ -91,11 +91,18 @@ final class CoreDataUserCaseTests: XCTestCase {
     }
 
     func test_save_requestLoginFail() {
-        let (sut, store) = makeSUT()
+        let (sut, _) = makeSUT()
+        let exp = expectation(description: "Wait for save completion")
+        var receivedError: Error?
+        let loginError = makeAnyError()
 
-        sut.login(.failure(makeAnyError())) { _ in }
+        sut.login(.failure(loginError)) { error in
+            receivedError = error
+            exp.fulfill()
+        }
 
-        XCTAssertNil(store.user)
+        wait(for: [exp], timeout: 1.0)
+        XCTAssertEqual(receivedError as NSError?, loginError)
     }
 
     func test_delete_requestLogoutUponDoesnotHaveAUser() {
@@ -131,7 +138,7 @@ final class CoreDataUserCaseTests: XCTestCase {
                     loginType: .facebook)
     }
 
-    private func makeAnyError() -> Error {
+    private func makeAnyError() -> NSError {
         return NSError(domain: "An Error", code: 0)
     }
 }
