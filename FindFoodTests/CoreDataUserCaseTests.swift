@@ -50,6 +50,10 @@ class UserStore {
         self.user = nil
     }
 
+    func completeSave(with error: Error) {
+        saveCompletion?(error)
+    }
+
     func completeSaveSuccessfully() {
         saveCompletion = nil
     }
@@ -70,10 +74,26 @@ final class CoreDataUserCaseTests: XCTestCase {
         XCTAssertNotNil(store.user)
     }
 
+    func test_save_requestLoginSuccessButSaveFail() {
+        let (sut, store) = makeSUT()
+        let exp = expectation(description: "Wait for save completion")
+        var receivedError: Error?
+
+        sut.login(.success(makeUser())) { error in
+            receivedError = error
+            exp.fulfill()
+        }
+
+        store.completeSave(with: makeAnyError())
+
+        wait(for: [exp], timeout: 1.0)
+        XCTAssertNotNil(receivedError)
+    }
+
     func test_save_requestLoginFail() {
         let (sut, store) = makeSUT()
 
-        sut.login(.failure(makeError())) { _ in }
+        sut.login(.failure(makeAnyError())) { _ in }
 
         XCTAssertNil(store.user)
     }
@@ -111,7 +131,7 @@ final class CoreDataUserCaseTests: XCTestCase {
                     loginType: .facebook)
     }
 
-    private func makeError() -> Error {
-        return NSError(domain: "An Error", code: 999)
+    private func makeAnyError() -> Error {
+        return NSError(domain: "An Error", code: 0)
     }
 }
