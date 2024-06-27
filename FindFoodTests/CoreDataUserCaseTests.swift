@@ -45,21 +45,30 @@ class LocalUserLoader {
     }
 
     func load(completion: @escaping (LoadUserResult) -> Void) {
-        store.retrieve { error in
-            if let error = error {
+        store.retrieve { result in
+            switch result {
+            case let .failure(error):
                 completion(.failure(error))
-            } else {
+            case .empty:
                 completion(.success(nil))
+            case let .found(user):
+                completion(.success(user))
             }
         }
     }
+}
+
+public enum RetrieveStoredUserResult {
+    case empty
+    case found(User)
+    case failure(Error)
 }
 
 protocol UserStore {
     var user: User? { get }
     typealias SaveCompletions = (Error?) -> Void
     typealias DeleteCompletions = (Error?) -> Void
-    typealias RetrieveCompletions = (Error?) -> Void
+    typealias RetrieveCompletions = (RetrieveStoredUserResult) -> Void
 
     func save(_ user: User, completion: @escaping SaveCompletions)
     func deleteUser(completion: @escaping DeleteCompletions)
@@ -116,11 +125,15 @@ class UserStoreSpy: UserStore {
     }
 
     func completeRetrieval(with error: Error) {
-        retrieveCompletion?(error)
+        retrieveCompletion?(.failure(error))
     }
 
     func completeRetrievalWithEmptyData() {
-        retrieveCompletion?(nil)
+        retrieveCompletion?(.empty)
+    }
+
+    func completeRetrieval(with user: User) {
+        retrieveCompletion?(.found(user))
     }
 }
 
@@ -287,6 +300,31 @@ final class CoreDataUserCaseTests: XCTestCase {
 
         wait(for: [exp], timeout: 1.0)
         XCTAssertNil(receivedUser)
+    }
+
+    func test_load_deliversStoredUserOnCoreData() {
+        let (sut, store) = makeSUT()
+        let exp = expectation(description: "Wait for load completion")
+        let existedUser = makeUser()
+
+        var receivedUser: User?
+        sut.load { result in
+            switch result {
+            case let .success(user):
+                receivedUser = user
+            default:
+                XCTFail("Expected success, got \(result) instead")
+            }
+            exp.fulfill()
+        }
+
+        store.completeRetrieval(with: existedUser)
+
+        wait(for: [exp], timeout: 1.0)
+        XCTAssertEqual(receivedUser?.name, existedUser.name)
+        XCTAssertEqual(receivedUser?.idToken, existedUser.idToken)
+        XCTAssertEqual(receivedUser?.image, existedUser.image)
+        XCTAssertEqual(receivedUser?.loginType, existedUser.loginType)
     }
 
     // MARK: Helper
