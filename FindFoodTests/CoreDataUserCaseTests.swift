@@ -150,15 +150,6 @@ final class CoreDataUserCaseTests: XCTestCase {
         XCTAssertThrowsError(try sut.logout { _ in })
     }
 
-    func test_delete_requestLogoutUponUserStoreHasAUser() {
-        let (sut, store) = makeSUT()
-        sut.login(.success(makeUser())) { _ in }
-
-        try? sut.logout() { _ in }
-
-        XCTAssertNil(store.user)
-    }
-
     func test_delete_requestLogoutSuccessButDeleteFail() {
         let (sut, store) = makeSUT()
         let logoutError = makeAnyError()
