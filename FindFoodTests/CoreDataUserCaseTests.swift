@@ -18,9 +18,7 @@ class LocalUserLoader {
     func login(_ result: Result<User, Error>, completion: @escaping (Error?) -> Void) {
         switch result {
         case .success(let user):
-            store.save(user) { error in
-                completion(error)
-            }
+            store.save(user, completion: completion)
         case .failure(let failure):
             completion(failure)
         }
@@ -55,7 +53,7 @@ class UserStore {
     }
 
     func completeSaveSuccessfully() {
-        saveCompletion = nil
+        saveCompletion?(nil)
     }
 }
 
@@ -89,6 +87,22 @@ final class CoreDataUserCaseTests: XCTestCase {
 
         wait(for: [exp], timeout: 1.0)
         XCTAssertEqual(receivedError as NSError?, saveError)
+    }
+
+    func test_save_requestLoginSuccessAndSaveSuccess() {
+        let (sut, store) = makeSUT()
+        let exp = expectation(description: "Wait for save completion")
+        var receivedError: Error?
+
+        sut.login(.success(makeUser())) { error in
+            receivedError = error
+            exp.fulfill()
+        }
+
+        store.completeSaveSuccessfully()
+
+        wait(for: [exp], timeout: 1.0)
+        XCTAssertNil(receivedError)
     }
 
     func test_save_requestLoginFail() {
