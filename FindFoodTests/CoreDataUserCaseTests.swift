@@ -18,7 +18,9 @@ class LocalUserLoader {
     func login(_ result: Result<User, Error>) {
         switch result {
         case .success(let user):
-            store.save(user)
+            store.save(user) { error in
+
+            }
         case .failure(let failure):
             ()
         }
@@ -35,13 +37,21 @@ class LocalUserLoader {
 
 class UserStore {
     private(set) var user: User?
+    private var saveCompletion: SaveCompletions?
 
-    func save(_ user: User) {
+    typealias SaveCompletions = (Error?) -> Void
+
+    func save(_ user: User, completion: @escaping SaveCompletions) {
         self.user = user
+        saveCompletion = completion
     }
 
     func deleteUser() {
         self.user = nil
+    }
+
+    func completeSaveSuccessfully() {
+        saveCompletion = nil
     }
 }
 
