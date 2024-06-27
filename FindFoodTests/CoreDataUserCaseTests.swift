@@ -45,18 +45,26 @@ protocol UserStore {
 }
 
 class UserStoreSpy: UserStore {
+    enum ReceivedMessage: Equatable {
+        case save
+        case delete
+    }
+
     private(set) var user: User?
     private var saveCompletion: SaveCompletions?
+    private(set) var receivedMessages = [ReceivedMessage]()
 
     typealias SaveCompletions = (Error?) -> Void
 
     func save(_ user: User, completion: @escaping SaveCompletions) {
         self.user = user
         saveCompletion = completion
+        receivedMessages.append(.save)
     }
 
     func deleteUser() {
         self.user = nil
+        receivedMessages.append(.delete)
     }
 
     func completeSave(with error: Error) {
