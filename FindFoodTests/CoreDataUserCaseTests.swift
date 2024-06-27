@@ -8,11 +8,17 @@
 import XCTest
 @testable import FindFood
 
+public enum LoadUserResult {
+    case success(User)
+    case failure(Error)
+}
+
 class LocalUserLoader {
     private let store: UserStore
 
     typealias SaveResult = Error?
     typealias DeleteResult = Error?
+    typealias LoadResult = LoadUserResult
 
     init(store: UserStore) {
         self.store = store
@@ -38,8 +44,12 @@ class LocalUserLoader {
         store.deleteUser(completion: completion)
     }
 
-    func load(completion: @escaping (Error?) -> Void) {
-        store.retrieve(completion: completion)
+    func load(completion: @escaping (LoadUserResult) -> Void) {
+        store.retrieve { error in
+            if let error = error {
+                completion(.failure(error))
+            }
+        }
     }
 }
 
@@ -236,8 +246,13 @@ final class CoreDataUserCaseTests: XCTestCase {
         let exp = expectation(description: "Wait for load completion")
 
         var receivedError: Error?
-        sut.load() { error in
-            receivedError = error
+        sut.load() { result in
+            switch result {
+            case let .failure(error):
+                receivedError = error
+            default:
+                XCTFail("Expected failure, got \(result) insted")
+            }
             exp.fulfill()
         }
 
