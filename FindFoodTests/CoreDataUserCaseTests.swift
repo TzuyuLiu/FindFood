@@ -9,7 +9,7 @@ import XCTest
 @testable import FindFood
 
 public enum LoadUserResult {
-    case success(User)
+    case success(User?)
     case failure(Error)
 }
 
@@ -48,6 +48,8 @@ class LocalUserLoader {
         store.retrieve { error in
             if let error = error {
                 completion(.failure(error))
+            } else {
+                completion(.success(nil))
             }
         }
     }
@@ -115,6 +117,10 @@ class UserStoreSpy: UserStore {
 
     func completeRetrieval(with error: Error) {
         retrieveCompletion?(error)
+    }
+
+    func completeRetrievalWithEmptyData() {
+        retrieveCompletion?(nil)
     }
 }
 
@@ -260,6 +266,27 @@ final class CoreDataUserCaseTests: XCTestCase {
 
         wait(for: [exp], timeout: 1.0)
         XCTAssertEqual(receivedError as? NSError, retrievalError)
+    }
+
+    func test_load_deliversNoUserDataOnEmptyCache() {
+        let (sut, store) = makeSUT()
+        let exp = expectation(description: "Wait for load completion")
+
+        var receivedUser: User?
+        sut.load { result in
+            switch result {
+            case let .success(user):
+                receivedUser = user
+            default:
+                XCTFail("Expected success, got \(result) instead")
+            }
+            exp.fulfill()
+        }
+
+        store.completeRetrievalWithEmptyData()
+
+        wait(for: [exp], timeout: 1.0)
+        XCTAssertNil(receivedUser)
     }
 
     // MARK: Helper
