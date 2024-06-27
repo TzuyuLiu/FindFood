@@ -15,11 +15,11 @@ class LocalUserLoader {
         self.store = store
     }
 
-    func login(_ result: Result<User, Error>) {
+    func login(_ result: Result<User, Error>, completion: @escaping (Error?) -> Void) {
         switch result {
         case .success(let user):
             store.save(user) { error in
-
+                completion(error)
             }
         case .failure(let failure):
             ()
@@ -65,7 +65,7 @@ final class CoreDataUserCaseTests: XCTestCase {
     func test_save_requestLoginSuccess() {
         let (sut, store) = makeSUT()
 
-        sut.login(.success(makeUser()))
+        sut.login(.success(makeUser())) { _ in }
 
         XCTAssertNotNil(store.user)
     }
@@ -73,7 +73,7 @@ final class CoreDataUserCaseTests: XCTestCase {
     func test_save_requestLoginFail() {
         let (sut, store) = makeSUT()
 
-        sut.login(.failure(makeError()))
+        sut.login(.failure(makeError())) { _ in }
 
         XCTAssertNil(store.user)
     }
@@ -86,7 +86,7 @@ final class CoreDataUserCaseTests: XCTestCase {
 
     func test_delete_requestLogoutUponUserStoreHasAUser() {
         let (sut, store) = makeSUT()
-        sut.login(.success(makeUser()))
+        sut.login(.success(makeUser())) { _ in }
 
         try? sut.logout()
 
