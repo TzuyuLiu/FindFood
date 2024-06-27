@@ -12,7 +12,7 @@ enum LoginType: String {
     case facebook
 }
 
-struct User {
+public struct User {
     let name: String
     let image: URL?
     let idToken: String
