@@ -33,7 +33,15 @@ class LocalUserLoader {
     }
 }
 
-class UserStore {
+protocol UserStore {
+    var user: User? { get }
+    typealias SaveCompletions = (Error?) -> Void
+
+    func save(_ user: User, completion: @escaping SaveCompletions)
+    func deleteUser()
+}
+
+class UserStoreSpy: UserStore {
     private(set) var user: User?
     private var saveCompletion: SaveCompletions?
 
@@ -125,8 +133,8 @@ final class CoreDataUserCaseTests: XCTestCase {
         XCTAssertEqual(receivedError as NSError?, expectedError, file: file, line: line)
     }
 
-    private func makeSUT() -> (LocalUserLoader, UserStore) {
-        let store = UserStore()
+    private func makeSUT() -> (LocalUserLoader, UserStoreSpy) {
+        let store = UserStoreSpy()
         let sut = LocalUserLoader(store: store)
 
         trackForMemoryLeaks(store)
