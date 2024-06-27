@@ -19,7 +19,6 @@
 		6483533B2C1C0EFD009B4C9B /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 6483533A2C1C0EFD009B4C9B /* FacebookLogin */; };
 		64D264AF2C21259F00A180D6 /* FacebookUserMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D264AE2C21259F00A180D6 /* FacebookUserMapper.swift */; };
 		64D264B12C212E2500A180D6 /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D264B02C212E2500A180D6 /* MemberViewController.swift */; };
-		64D264B42C228B1600A180D6 /* UserCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D264B32C228B1600A180D6 /* UserCache.swift */; };
 		64D264B72C24007C00A180D6 /* UserDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 64D264B52C24007C00A180D6 /* UserDataModel.xcdatamodeld */; };
 		64D264BA2C2405B500A180D6 /* ManagedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D264B92C2405B500A180D6 /* ManagedUser.swift */; };
 		64EB52F52C1A958F0043D5E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB52F42C1A958F0043D5E6 /* AppDelegate.swift */; };
@@ -53,7 +52,6 @@
 		648353382C1C0E56009B4C9B /* FindFood.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FindFood.entitlements; sourceTree = "<group>"; };
 		64D264AE2C21259F00A180D6 /* FacebookUserMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookUserMapper.swift; sourceTree = "<group>"; };
 		64D264B02C212E2500A180D6 /* MemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
-		64D264B32C228B1600A180D6 /* UserCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCache.swift; sourceTree = "<group>"; };
 		64D264B62C24007C00A180D6 /* UserDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserDataModel.xcdatamodel; sourceTree = "<group>"; };
 		64D264B92C2405B500A180D6 /* ManagedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedUser.swift; sourceTree = "<group>"; };
 		64EB52F12C1A958F0043D5E6 /* FindFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,7 +94,6 @@
 				6483531D2C1ABFCF009B4C9B /* AuthProvider.swift */,
 				648353302C1AE7BF009B4C9B /* LoginViewModel.swift */,
 				648353332C1AE9BD009B4C9B /* LogoutProvider.swift */,
-				64D264B32C228B1600A180D6 /* UserCache.swift */,
 				6483531F2C1ACA0F009B4C9B /* User.swift */,
 			);
 			path = Feature;
@@ -308,7 +305,6 @@
 				648353312C1AE7BF009B4C9B /* LoginViewModel.swift in Sources */,
 				64D264B72C24007C00A180D6 /* UserDataModel.xcdatamodeld in Sources */,
 				64D264BA2C2405B500A180D6 /* ManagedUser.swift in Sources */,
-				64D264B42C228B1600A180D6 /* UserCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
