@@ -78,16 +78,17 @@ final class CoreDataUserCaseTests: XCTestCase {
         let (sut, store) = makeSUT()
         let exp = expectation(description: "Wait for save completion")
         var receivedError: Error?
+        let saveError = makeAnyError()
 
         sut.login(.success(makeUser())) { error in
             receivedError = error
             exp.fulfill()
         }
 
-        store.completeSave(with: makeAnyError())
+        store.completeSave(with: saveError)
 
         wait(for: [exp], timeout: 1.0)
-        XCTAssertNotNil(receivedError)
+        XCTAssertEqual(receivedError as NSError?, saveError)
     }
 
     func test_save_requestLoginFail() {
