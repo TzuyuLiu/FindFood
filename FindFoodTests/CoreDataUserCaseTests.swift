@@ -11,11 +11,13 @@ import XCTest
 class LocalUserLoader {
     private let store: UserStore
 
+    typealias SaveResult = Error?
+
     init(store: UserStore) {
         self.store = store
     }
 
-    func login(_ result: Result<User, Error>, completion: @escaping (Error?) -> Void) {
+    func login(_ result: Result<User, Error>, completion: @escaping (SaveResult) -> Void) {
         switch result {
         case .success(let user):
             store.save(user) { [weak self] error in
