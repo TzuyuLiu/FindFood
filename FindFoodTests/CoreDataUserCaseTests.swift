@@ -18,7 +18,10 @@ class LocalUserLoader {
     func login(_ result: Result<User, Error>, completion: @escaping (Error?) -> Void) {
         switch result {
         case .success(let user):
-            store.save(user, completion: completion)
+            store.save(user) { [weak self] error in
+                guard let self = self else { return }
+                completion(error)
+            }
         case .failure(let failure):
             completion(failure)
         }
@@ -114,6 +117,23 @@ final class CoreDataUserCaseTests: XCTestCase {
         try? sut.logout()
 
         XCTAssertNil(store.user)
+    }
+
+    func test_save_doesNotDeliveryDeletionErrorAfterSUTInstanceHasBeenDeallocated() {
+        let store = UserStoreSpy()
+        var sut: LocalUserLoader? = LocalUserLoader(store: store)
+
+        var receivedError: Error?
+
+        sut?.login(.success(makeUser()), completion: { error in
+            receivedError = error
+        })
+
+        sut = nil
+
+        store.completeSave(with: makeAnyError())
+
+        XCTAssertNil(receivedError)
     }
 
     // MARK: Helper
