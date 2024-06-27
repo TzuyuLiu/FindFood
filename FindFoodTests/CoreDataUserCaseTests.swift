@@ -34,6 +34,10 @@ class LocalUserLoader {
 
         store.deleteUser()
     }
+
+    func load() {
+        store.retrieve()
+    }
 }
 
 protocol UserStore {
@@ -42,12 +46,14 @@ protocol UserStore {
 
     func save(_ user: User, completion: @escaping SaveCompletions)
     func deleteUser()
+    func retrieve()
 }
 
 class UserStoreSpy: UserStore {
     enum ReceivedMessage: Equatable {
         case save
         case delete
+        case retrieve
     }
 
     private(set) var user: User?
@@ -65,6 +71,10 @@ class UserStoreSpy: UserStore {
     func deleteUser() {
         self.user = nil
         receivedMessages.append(.delete)
+    }
+
+    func retrieve() {
+        receivedMessages.append(.retrieve)
     }
 
     func completeSave(with error: Error) {
@@ -142,6 +152,14 @@ final class CoreDataUserCaseTests: XCTestCase {
         store.completeSave(with: makeAnyError())
 
         XCTAssertNil(receivedError)
+    }
+
+    func test_load_requestsCoreDataRetriveal() {
+        let (sut, store) = makeSUT()
+
+        sut.load()
+
+        XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
 
     // MARK: Helper
