@@ -188,7 +188,7 @@ final class CoreDataUserCaseTests: XCTestCase {
         XCTAssertNil(receivedError)
     }
 
-    func test_save_doesNotDeliveryDeletionErrorAfterSUTInstanceHasBeenDeallocated() {
+    func test_save_doesNotDeliveryLoginErrorAfterSUTInstanceHasBeenDeallocated() {
         let store = UserStoreSpy()
         var sut: LocalUserLoader? = LocalUserLoader(store: store)
 
@@ -201,6 +201,23 @@ final class CoreDataUserCaseTests: XCTestCase {
         sut = nil
 
         store.completeSave(with: makeAnyError())
+
+        XCTAssertNil(receivedError)
+    }
+
+    func test_save_doesNotDeliveryLogoutErrorAfterSUTInstanceHasBeenDeallocated() {
+        let store = UserStoreSpy()
+        var sut: LocalUserLoader? = LocalUserLoader(store: store)
+
+        var receivedError: Error?
+
+        try? sut?.logout { error in
+            receivedError = error
+        }
+
+        sut = nil
+
+        store.completeDelete(with: makeAnyError())
 
         XCTAssertNil(receivedError)
     }
