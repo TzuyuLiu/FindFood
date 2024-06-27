@@ -12,6 +12,7 @@ class LocalUserLoader {
     private let store: UserStore
 
     typealias SaveResult = Error?
+    typealias DeleteResult = Error?
 
     init(store: UserStore) {
         self.store = store
@@ -29,12 +30,12 @@ class LocalUserLoader {
         }
     }
 
-    func logout() throws {
+    func logout(completion: @escaping (DeleteResult) -> Void) throws {
         guard store.user != nil else {
             throw NSError(domain: "Doesn't have a user.", code: 998)
         }
 
-        store.deleteUser()
+        store.deleteUser(completion: completion)
     }
 
     func load(completion: @escaping (Error?) -> Void) {
@@ -45,10 +46,11 @@ class LocalUserLoader {
 protocol UserStore {
     var user: User? { get }
     typealias SaveCompletions = (Error?) -> Void
+    typealias DeleteCompletions = (Error?) -> Void
     typealias RetrieveCompletions = (Error?) -> Void
 
     func save(_ user: User, completion: @escaping SaveCompletions)
-    func deleteUser()
+    func deleteUser(completion: @escaping DeleteCompletions)
     func retrieve(completion: @escaping RetrieveCompletions)
 }
 
@@ -61,6 +63,7 @@ class UserStoreSpy: UserStore {
 
     private(set) var user: User?
     private var saveCompletion: SaveCompletions?
+    private var deleteCompletion: DeleteCompletions?
     private var retrieveCompletion: RetrieveCompletions?
 
     private(set) var receivedMessages = [ReceivedMessage]()
@@ -73,8 +76,9 @@ class UserStoreSpy: UserStore {
         receivedMessages.append(.save)
     }
 
-    func deleteUser() {
+    func deleteUser(completion: @escaping DeleteCompletions) {
         self.user = nil
+        deleteCompletion = completion
         receivedMessages.append(.delete)
     }
 
@@ -89,6 +93,14 @@ class UserStoreSpy: UserStore {
 
     func completeSaveSuccessfully() {
         saveCompletion?(nil)
+    }
+
+    func completeDelete(with error: Error) {
+        deleteCompletion?(error)
+    }
+
+    func completeDeleteSuccessfully() {
+        deleteCompletion?(nil)
     }
 
     func completeRetrieval(with error: Error) {
@@ -135,14 +147,14 @@ final class CoreDataUserCaseTests: XCTestCase {
     func test_delete_requestLogoutUponDoesnotHaveAUser() {
         let (sut, _) = makeSUT()
 
-        XCTAssertThrowsError(try sut.logout())
+        XCTAssertThrowsError(try sut.logout { _ in })
     }
 
     func test_delete_requestLogoutUponUserStoreHasAUser() {
         let (sut, store) = makeSUT()
         sut.login(.success(makeUser())) { _ in }
 
-        try? sut.logout()
+        try? sut.logout() { _ in }
 
         XCTAssertNil(store.user)
     }
