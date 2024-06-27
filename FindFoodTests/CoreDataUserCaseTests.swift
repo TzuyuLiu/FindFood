@@ -178,6 +178,25 @@ final class CoreDataUserCaseTests: XCTestCase {
         XCTAssertEqual(receivedError as? NSError, logoutError)
     }
 
+    func test_delete_requestLogoutSuccessAndDeleteSuccess() {
+        let (sut, store) = makeSUT()
+        let logoutError = makeAnyError()
+        let exp = expectation(description: "Wait for logout completion")
+        sut.login(.success(makeUser())) { _ in }
+
+        var receivedError: Error?
+        try? sut.logout { error in
+            receivedError = error
+            exp.fulfill()
+        }
+
+        store.completeDeleteSuccessfully()
+
+        wait(for: [exp], timeout: 1.0)
+
+        XCTAssertNil(receivedError)
+    }
+
     func test_save_doesNotDeliveryDeletionErrorAfterSUTInstanceHasBeenDeallocated() {
         let store = UserStoreSpy()
         var sut: LocalUserLoader? = LocalUserLoader(store: store)
