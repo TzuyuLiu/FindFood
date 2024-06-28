@@ -15,12 +15,12 @@ public enum RetrieveStoredUserResult {
 
 protocol UserStore {
     var user: User? { get }
-    typealias SaveCompletions = (Error?) -> Void
-    typealias DeleteCompletions = (Error?) -> Void
-    typealias RetrieveCompletions = (RetrieveStoredUserResult) -> Void
+    typealias InsertionCompletions = (Error?) -> Void
+    typealias DeletionCompletions = (Error?) -> Void
+    typealias RetrievalCompletions = (RetrieveStoredUserResult) -> Void
 
-    func save(_ user: User, completion: @escaping SaveCompletions)
-    func deleteUser(completion: @escaping DeleteCompletions)
-    func retrieve(completion: @escaping RetrieveCompletions)
+    func save(_ user: User, completion: @escaping InsertionCompletions)
+    func deleteUser(completion: @escaping DeletionCompletions)
+    func retrieve(completion: @escaping RetrievalCompletions)
 }
 

@@ -17,8 +17,8 @@ class UserStoreSpy: UserStore {
 
     private(set) var user: User?
     private var saveCompletion: SaveCompletions?
-    private var deleteCompletion: DeleteCompletions?
-    private var retrieveCompletion: RetrieveCompletions?
+    private var deleteCompletion: DeletionCompletions?
+    private var retrieveCompletion: RetrievalCompletions?
 
     private(set) var receivedMessages = [ReceivedMessage]()
 
@@ -30,13 +30,13 @@ class UserStoreSpy: UserStore {
         receivedMessages.append(.save)
     }
 
-    func deleteUser(completion: @escaping DeleteCompletions) {
+    func deleteUser(completion: @escaping DeletionCompletions) {
         self.user = nil
         deleteCompletion = completion
         receivedMessages.append(.delete)
     }
 
-    func retrieve(completion: @escaping RetrieveCompletions) {
+    func retrieve(completion: @escaping RetrievalCompletions) {
         retrieveCompletion = completion
         receivedMessages.append(.retrieve)
     }
