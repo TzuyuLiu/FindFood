@@ -8,7 +8,7 @@
 import XCTest
 @testable import FindFood
 
-class CodableFeedStore {
+class CodableUserStore {
     func retrieve(completion: @escaping UserStore.RetrievalCompletions) {
         completion(.empty)
     }
@@ -16,7 +16,7 @@ class CodableFeedStore {
 
 final class CodableUserStoreTest: XCTestCase {
     func test_retrieve_deilversEmptyOnEmptyCache() {
-        let sut = CodableFeedStore()
+        let sut = CodableUserStore()
         let exp = expectation(description: "Wait for cache retrieval")
 
         sut.retrieve { result in
@@ -33,7 +33,7 @@ final class CodableUserStoreTest: XCTestCase {
     }
 
     func test_retrieve_hasNoSideEffectOnEmptyCache() {
-        let sut = CodableFeedStore()
+        let sut = CodableUserStore()
         let exp = expectation(description: "Wait for cache retrieval")
 
         sut.retrieve { firstResult in
@@ -44,7 +44,7 @@ final class CodableUserStoreTest: XCTestCase {
                 default:
                     XCTFail("Expected empty result, got \(firstResult) and \(secondResult) instead.")
                 }
-                
+
                 exp.fulfill()
             }
         }
