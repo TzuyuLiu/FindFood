@@ -34,6 +34,7 @@
 		64FCCCA32C2E55EE00678F77 /* UserStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCCCA22C2E55EE00678F77 /* UserStoreSpy.swift */; };
 		64FCCCA62C2E573800678F77 /* UserLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCCCA52C2E573800678F77 /* UserLoader.swift */; };
 		64FCCCA82C2E5A3D00678F77 /* CodableUserStoreTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCCCA72C2E5A3D00678F77 /* CodableUserStoreTest.swift */; };
+		64FCCCAA2C2E5ECB00678F77 /* LocalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCCCA92C2E5ECB00678F77 /* LocalUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		64FCCCA22C2E55EE00678F77 /* UserStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStoreSpy.swift; sourceTree = "<group>"; };
 		64FCCCA52C2E573800678F77 /* UserLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoader.swift; sourceTree = "<group>"; };
 		64FCCCA72C2E5A3D00678F77 /* CodableUserStoreTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableUserStoreTest.swift; sourceTree = "<group>"; };
+		64FCCCA92C2E5ECB00678F77 /* LocalUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 			children = (
 				64FCCC9B2C2D510C00678F77 /* LocalUserLoader.swift */,
 				64FCCC9D2C2D513600678F77 /* UserStore.swift */,
+				64FCCCA92C2E5ECB00678F77 /* LocalUser.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				648353342C1AE9BD009B4C9B /* LogoutProvider.swift in Sources */,
 				6483532D2C1ADD48009B4C9B /* GSAuthProvider.swift in Sources */,
 				64D264AF2C21259F00A180D6 /* FacebookUserMapper.swift in Sources */,
+				64FCCCAA2C2E5ECB00678F77 /* LocalUser.swift in Sources */,
 				64FCCC9C2C2D510C00678F77 /* LocalUserLoader.swift in Sources */,
 				64EB52F72C1A958F0043D5E6 /* SceneDelegate.swift in Sources */,
 				64D264B12C212E2500A180D6 /* MemberViewController.swift in Sources */,
