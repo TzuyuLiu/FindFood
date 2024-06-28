@@ -33,6 +33,7 @@
 		64FCCC9E2C2D513600678F77 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCCC9D2C2D513600678F77 /* UserStore.swift */; };
 		64FCCCA32C2E55EE00678F77 /* UserStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCCCA22C2E55EE00678F77 /* UserStoreSpy.swift */; };
 		64FCCCA62C2E573800678F77 /* UserLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCCCA52C2E573800678F77 /* UserLoader.swift */; };
+		64FCCCA82C2E5A3D00678F77 /* CodableUserStoreTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCCCA72C2E5A3D00678F77 /* CodableUserStoreTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		64FCCC9D2C2D513600678F77 /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		64FCCCA22C2E55EE00678F77 /* UserStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStoreSpy.swift; sourceTree = "<group>"; };
 		64FCCCA52C2E573800678F77 /* UserLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoader.swift; sourceTree = "<group>"; };
+		64FCCCA72C2E5A3D00678F77 /* CodableUserStoreTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableUserStoreTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 			children = (
 				64FCCC962C2BFA0B00678F77 /* Helper */,
 				64EB530B2C1A95900043D5E6 /* CacheUserUseCaseTests.swift */,
+				64FCCCA72C2E5A3D00678F77 /* CodableUserStoreTest.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				64FCCCA32C2E55EE00678F77 /* UserStoreSpy.swift in Sources */,
 				64FCCC982C2BFA2800678F77 /* XCTTestCase+MemoryLeakTracking.swift in Sources */,
 				64EB530C2C1A95900043D5E6 /* CacheUserUseCaseTests.swift in Sources */,
+				64FCCCA82C2E5A3D00678F77 /* CodableUserStoreTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
