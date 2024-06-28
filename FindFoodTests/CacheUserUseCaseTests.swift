@@ -1,6 +1,6 @@
 //
-//  CoreDataUserCaseTests.swift
-//  CoreDataUserCaseTests
+//  CacheUserUseCaseTests.swift
+//  CacheUserUseCaseTests
 //
 //  Created by 劉子瑜-20001220 on 2024/6/13.
 //
@@ -70,7 +70,7 @@ class UserStoreSpy: UserStore {
     }
 }
 
-final class CoreDataUserCaseTests: XCTestCase {
+final class CacheUserUseCaseTests: XCTestCase {
     func test_init_doseNotHaveAUserUponCreation() {
         let (_, store) = makeSUT()
 
