@@ -23,7 +23,7 @@ extension LocalUserLoader {
     func login(_ result: Result<User, Error>, completion: @escaping (SaveResult) -> Void) {
         switch result {
         case .success(let user):
-            store.save(user) { [weak self] error in
+            store.save(user.toLocal()) { [weak self] error in
                 guard let self = self else { return }
                 completion(error)
             }
@@ -50,8 +50,20 @@ extension LocalUserLoader: UserLoader {
             case .empty:
                 completion(.success(nil))
             case let .found(user):
-                completion(.success(user))
+                completion(.success(user.toModels()))
             }
         }
+    }
+}
+
+private extension User {
+    func toLocal() -> LocalUser {
+        return LocalUser(name: self.name, image: self.image, idToken: self.idToken, loginType: LocalLoginType(rawValue: self.loginType.rawValue) ?? .google)
+    }
+}
+
+private extension LocalUser {
+    func toModels() -> User {
+        return User(name: self.name, image: self.image, idToken: self.idToken, loginType: LoginType(rawValue: self.loginType.rawValue) ?? .google)
     }
 }

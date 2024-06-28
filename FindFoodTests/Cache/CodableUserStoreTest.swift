@@ -77,28 +77,4 @@ final class CodableUserStoreTest: XCTestCase {
 
         wait(for: [exp], timeout: 1.0)
     }
-
-    func test_retrieveAfterInsertingToEmptyCache_deliversInsertedValues() {
-        let sut = CodableUserStore()
-        let feed = uniqueImageFeed().local
-        let timestamp = Date()
-        let exp = expectation(description: "Wait for cache retrieval")
-        sut.insert(feed, timestamp: timestamp) { insertionError in
-            XCTAssertNil(insertionError, "Expected feed to be insertd successfully")
-
-            sut.retrieve { retrieveResult in
-                switch (retrieveResult) {
-                case let (.found(feed: retrieveFeed, timestamp: retrieveTimestamp)):
-                    XCTAssertEqual(retrieveFeed, feed)
-                    XCTAssertEqual(retrieveTimestamp, timestamp)
-                default:
-                    XCTFail("Expected found result with feed \(feed) and timestamp \(timestamp), got \(retrieveResult) instead")
-                }
-
-                exp.fulfill()
-            }
-        }
-
-        wait(for: [exp], timeout: 1.0)
-    }
 }

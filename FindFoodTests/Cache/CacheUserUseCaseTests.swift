@@ -176,7 +176,7 @@ final class CacheUserUseCaseTests: XCTestCase {
     func test_load_deliversStoredUserOnCoreData() {
         let (sut, store) = makeSUT()
         let exp = expectation(description: "Wait for load completion")
-        let existedUser = makeUser()
+        let existedUser = makeLocalUser()
 
         var receivedUser: User?
         sut.load { result in
@@ -195,7 +195,7 @@ final class CacheUserUseCaseTests: XCTestCase {
         XCTAssertEqual(receivedUser?.name, existedUser.name)
         XCTAssertEqual(receivedUser?.idToken, existedUser.idToken)
         XCTAssertEqual(receivedUser?.image, existedUser.image)
-        XCTAssertEqual(receivedUser?.loginType, existedUser.loginType)
+        XCTAssertEqual(receivedUser?.loginType.rawValue, existedUser.loginType.rawValue)
     }
 
     // MARK: Helper
@@ -227,6 +227,13 @@ final class CacheUserUseCaseTests: XCTestCase {
 
     private func makeUser() -> User {
         return User(name: "Andy",
+                    image: nil,
+                    idToken: "12345",
+                    loginType: .facebook)
+    }
+
+    private func makeLocalUser() -> LocalUser {
+        return LocalUser(name: "Andy",
                     image: nil,
                     idToken: "12345",
                     loginType: .facebook)

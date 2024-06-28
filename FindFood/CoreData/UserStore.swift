@@ -9,17 +9,17 @@ import Foundation
 
 public enum RetrieveStoredUserResult {
     case empty
-    case found(User)
+    case found(LocalUser)
     case failure(Error)
 }
 
 protocol UserStore {
-    var user: User? { get }
+    var user: LocalUser? { get }
     typealias InsertionCompletions = (Error?) -> Void
     typealias DeletionCompletions = (Error?) -> Void
     typealias RetrievalCompletions = (RetrieveStoredUserResult) -> Void
 
-    func save(_ user: User, completion: @escaping InsertionCompletions)
+    func save(_ user: LocalUser, completion: @escaping InsertionCompletions)
     func deleteUser(completion: @escaping DeletionCompletions)
     func retrieve(completion: @escaping RetrievalCompletions)
 }

@@ -15,7 +15,7 @@ class UserStoreSpy: UserStore {
         case retrieve
     }
 
-    private(set) var user: User?
+    private(set) var user: LocalUser?
     private var saveCompletion: SaveCompletions?
     private var deleteCompletion: DeletionCompletions?
     private var retrieveCompletion: RetrievalCompletions?
@@ -24,7 +24,7 @@ class UserStoreSpy: UserStore {
 
     typealias SaveCompletions = (Error?) -> Void
 
-    func save(_ user: User, completion: @escaping SaveCompletions) {
+    func save(_ user: LocalUser, completion: @escaping SaveCompletions) {
         self.user = user
         saveCompletion = completion
         receivedMessages.append(.save)
@@ -65,7 +65,7 @@ class UserStoreSpy: UserStore {
         retrieveCompletion?(.empty)
     }
 
-    func completeRetrieval(with user: User) {
+    func completeRetrieval(with user: LocalUser) {
         retrieveCompletion?(.found(user))
     }
 }
