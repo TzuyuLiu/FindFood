@@ -32,6 +32,7 @@
 		64FCCC9C2C2D510C00678F77 /* LocalUserLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCCC9B2C2D510C00678F77 /* LocalUserLoader.swift */; };
 		64FCCC9E2C2D513600678F77 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCCC9D2C2D513600678F77 /* UserStore.swift */; };
 		64FCCCA32C2E55EE00678F77 /* UserStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCCCA22C2E55EE00678F77 /* UserStoreSpy.swift */; };
+		64FCCCA62C2E573800678F77 /* UserLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCCCA52C2E573800678F77 /* UserLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		64FCCC9B2C2D510C00678F77 /* LocalUserLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserLoader.swift; sourceTree = "<group>"; };
 		64FCCC9D2C2D513600678F77 /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		64FCCCA22C2E55EE00678F77 /* UserStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStoreSpy.swift; sourceTree = "<group>"; };
+		64FCCCA52C2E573800678F77 /* UserLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				648353302C1AE7BF009B4C9B /* LoginViewModel.swift */,
 				648353332C1AE9BD009B4C9B /* LogoutProvider.swift */,
 				6483531F2C1ACA0F009B4C9B /* User.swift */,
+				64FCCCA52C2E573800678F77 /* UserLoader.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				64D264B12C212E2500A180D6 /* MemberViewController.swift in Sources */,
 				648353312C1AE7BF009B4C9B /* LoginViewModel.swift in Sources */,
 				64D264B72C24007C00A180D6 /* UserDataModel.xcdatamodeld in Sources */,
+				64FCCCA62C2E573800678F77 /* UserLoader.swift in Sources */,
 				64D264BA2C2405B500A180D6 /* ManagedUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

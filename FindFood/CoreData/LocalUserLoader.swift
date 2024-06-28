@@ -7,12 +7,7 @@
 
 import Foundation
 
-public enum LoadUserResult {
-    case success(User?)
-    case failure(Error)
-}
-
-class LocalUserLoader {
+class LocalUserLoader: UserLoader {
     private let store: UserStore
 
     typealias SaveResult = Error?
