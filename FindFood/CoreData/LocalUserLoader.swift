@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LocalUserLoader: UserLoader {
+class LocalUserLoader {
     private let store: UserStore
 
     typealias SaveResult = Error?
@@ -17,7 +17,9 @@ class LocalUserLoader: UserLoader {
     init(store: UserStore) {
         self.store = store
     }
+}
 
+extension LocalUserLoader {
     func login(_ result: Result<User, Error>, completion: @escaping (SaveResult) -> Void) {
         switch result {
         case .success(let user):
@@ -37,7 +39,9 @@ class LocalUserLoader: UserLoader {
 
         store.deleteUser(completion: completion)
     }
+}
 
+extension LocalUserLoader: UserLoader {
     func load(completion: @escaping (LoadUserResult) -> Void) {
         store.retrieve { result in
             switch result {
