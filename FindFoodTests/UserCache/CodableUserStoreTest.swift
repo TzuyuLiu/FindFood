@@ -103,27 +103,18 @@ final class CodableUserStoreTest: XCTestCase {
     func test_retrieveAfterInsertingToEmptyCache_deliversInsertedValues() {
         let sut = makeSUT()
         let user = makeCodableLocalUser()
-        let exp = expectation(description: "Wait for cache retrieval")
-        sut.insert(user) { insertionError in
-            XCTAssertNil(insertionError, "Expected feed to be inserted successfully")
-            exp.fulfill()
-        }
+
+        insert(user, to: sut)
 
         expect(sut, toRetrieve: .found(user.localUser))
-
-        wait(for: [exp], timeout: 1.0)
     }
 
     func test_retrieve_hasNoSideEffectOnNonEmptyCache() {
         let sut = makeSUT()
         let user = makeCodableLocalUser()
-        let exp = expectation(description: "Wait for cache retrieval")
-        sut.insert(user) { insertionError in
-            XCTAssertNil(insertionError, "Expected feed to be inserted successfully")
-            exp.fulfill()
-        }
-
-        wait(for: [exp], timeout: 1.0)
+        
+        insert(user, to: sut)
+        
         expect(sut, toRetrieveTwice: .found(user.localUser))
     }
 
@@ -151,6 +142,16 @@ final class CodableUserStoreTest: XCTestCase {
     private func expect(_ sut: CodableUserStore, toRetrieveTwice expectedResult: RetrieveCachedUserResult, file: StaticString = #file, line: UInt = #line) {
         expect(sut, toRetrieve: expectedResult, file: file, line: line)
         expect(sut, toRetrieve: expectedResult, file: file, line: line)
+    }
+
+    private func insert(_ cache: CodableLocalUser, to sut: CodableUserStore) {
+        let exp = expectation(description: "Wait for cache retrieval")
+        sut.insert(cache) { insertionError in
+            XCTAssertNil(insertionError, "Expected feed to be inserted successfully")
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 1.0)
     }
 
     private func testSpecificStoreURL() -> URL {
