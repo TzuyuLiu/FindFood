@@ -120,25 +120,11 @@ final class CodableUserStoreTest: XCTestCase {
         let exp = expectation(description: "Wait for cache retrieval")
         sut.insert(user) { insertionError in
             XCTAssertNil(insertionError, "Expected feed to be inserted successfully")
-
-            sut.retrieve { firstResult in
-                sut.retrieve { secondResult in
-                    switch (firstResult, secondResult) {
-                    case let (.found(firstUser), .found(secondUser)):
-                        XCTAssertEqual(firstUser.name, secondUser.name)
-                        XCTAssertEqual(firstUser.idToken, secondUser.idToken)
-                        XCTAssertEqual(firstUser.image, secondUser.image)
-                        XCTAssertEqual(firstUser.loginType, secondUser.loginType)
-                    default:
-                        XCTFail("Expected retrieving twice from non empty cache to deliver same found result with user \(user), got \(firstResult) and \(secondResult) instead")
-                    }
-
-                    exp.fulfill()
-                }
-            }
+            exp.fulfill()
         }
 
         wait(for: [exp], timeout: 1.0)
+        expect(sut, toRetrieveTwice: .found(user.localUser))
     }
 
     // MARK: - Helper
@@ -160,6 +146,11 @@ final class CodableUserStoreTest: XCTestCase {
                 XCTFail("Expected to retrieve \(expectedResult), got \(retrievedResult) instead.", file: file, line: line)
             }
         }
+    }
+
+    private func expect(_ sut: CodableUserStore, toRetrieveTwice expectedResult: RetrieveCachedUserResult, file: StaticString = #file, line: UInt = #line) {
+        expect(sut, toRetrieve: expectedResult, file: file, line: line)
+        expect(sut, toRetrieve: expectedResult, file: file, line: line)
     }
 
     private func testSpecificStoreURL() -> URL {
