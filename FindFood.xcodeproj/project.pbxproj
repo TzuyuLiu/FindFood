@@ -35,6 +35,7 @@
 		64FCCCA62C2E573800678F77 /* UserLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCCCA52C2E573800678F77 /* UserLoader.swift */; };
 		64FCCCA82C2E5A3D00678F77 /* CodableUserStoreTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCCCA72C2E5A3D00678F77 /* CodableUserStoreTest.swift */; };
 		64FCCCAA2C2E5ECB00678F77 /* LocalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCCCA92C2E5ECB00678F77 /* LocalUser.swift */; };
+		64FCCCAC2C32464D00678F77 /* UserCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCCCAB2C32464D00678F77 /* UserCacheTestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		64FCCCA52C2E573800678F77 /* UserLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoader.swift; sourceTree = "<group>"; };
 		64FCCCA72C2E5A3D00678F77 /* CodableUserStoreTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableUserStoreTest.swift; sourceTree = "<group>"; };
 		64FCCCA92C2E5ECB00678F77 /* LocalUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUser.swift; sourceTree = "<group>"; };
+		64FCCCAB2C32464D00678F77 /* UserCacheTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCacheTestHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,7 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				64FCCCA42C2E560300678F77 /* Helper */,
-				64FCCCA12C2E55DB00678F77 /* Cache */,
+				64FCCCA12C2E55DB00678F77 /* UserCache */,
 			);
 			path = FindFoodTests;
 			sourceTree = "<group>";
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				64FCCCA22C2E55EE00678F77 /* UserStoreSpy.swift */,
+				64FCCCAB2C32464D00678F77 /* UserCacheTestHelpers.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -205,14 +208,14 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		64FCCCA12C2E55DB00678F77 /* Cache */ = {
+		64FCCCA12C2E55DB00678F77 /* UserCache */ = {
 			isa = PBXGroup;
 			children = (
 				64FCCC962C2BFA0B00678F77 /* Helper */,
 				64EB530B2C1A95900043D5E6 /* CacheUserUseCaseTests.swift */,
 				64FCCCA72C2E5A3D00678F77 /* CodableUserStoreTest.swift */,
 			);
-			path = Cache;
+			path = UserCache;
 			sourceTree = "<group>";
 		};
 		64FCCCA42C2E560300678F77 /* Helper */ = {
@@ -359,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64FCCCA32C2E55EE00678F77 /* UserStoreSpy.swift in Sources */,
+				64FCCCAC2C32464D00678F77 /* UserCacheTestHelpers.swift in Sources */,
 				64FCCC982C2BFA2800678F77 /* XCTTestCase+MemoryLeakTracking.swift in Sources */,
 				64EB530C2C1A95900043D5E6 /* CacheUserUseCaseTests.swift in Sources */,
 				64FCCCA82C2E5A3D00678F77 /* CodableUserStoreTest.swift in Sources */,
