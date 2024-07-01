@@ -137,6 +137,33 @@ final class CodableUserStoreTest: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
 
+    func test_retrieve_hasNoSideEffectOnNonEmptyCache() {
+        let sut = makeSUT()
+        let user = makeCodableLocalUser()
+        let exp = expectation(description: "Wait for cache retrieval")
+        sut.insert(user) { insertionError in
+            XCTAssertNil(insertionError, "Expected feed to be inserted successfully")
+
+            sut.retrieve { firstResult in
+                sut.retrieve { secondResult in
+                    switch (firstResult, secondResult) {
+                    case let (.found(firstUser), .found(secondUser)):
+                        XCTAssertEqual(firstUser.name, secondUser.name)
+                        XCTAssertEqual(firstUser.idToken, secondUser.idToken)
+                        XCTAssertEqual(firstUser.image, secondUser.image)
+                        XCTAssertEqual(firstUser.loginType, secondUser.loginType)
+                    default:
+                        XCTFail("Expected retrieving twice from non empty cache to deliver same found result with user \(user), got \(firstResult) and \(secondResult) instead")
+                    }
+
+                    exp.fulfill()
+                }
+            }
+        }
+
+        wait(for: [exp], timeout: 1.0)
+    }
+
     // MARK: - Helper
 
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> CodableUserStore {
