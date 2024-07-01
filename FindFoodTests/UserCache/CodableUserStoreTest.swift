@@ -34,6 +34,12 @@ public struct CodableLocalUser: Equatable, Codable {
 }
 
 class CodableUserStore {
+    private let storeURL: URL
+
+    init(storeURL: URL) {
+        self.storeURL = storeURL
+    }
+
     func retrieve(completion: @escaping UserStore.RetrievalCompletions) {
         guard let data = try? Data(contentsOf: storeURL) else {
             return completion(.empty)
@@ -50,8 +56,6 @@ class CodableUserStore {
         try! encoded.write(to: storeURL)
         completion(nil)
     }
-
-    private let storeURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("User.store")
 }
 
 final class CodableUserStoreTest: XCTestCase {
@@ -144,7 +148,7 @@ final class CodableUserStoreTest: XCTestCase {
     // MARK: - Helper
 
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> CodableUserStore {
-        let sut = CodableUserStore()
+        let sut = CodableUserStore(storeURL: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("User.store"))
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
     }
