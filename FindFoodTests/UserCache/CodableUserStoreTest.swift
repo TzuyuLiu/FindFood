@@ -80,7 +80,7 @@ final class CodableUserStoreTest: XCTestCase {
 
 
     func test_retrieve_deilversEmptyOnEmptyCache() {
-        let sut = CodableUserStore()
+        let sut = makeSUT()
         let exp = expectation(description: "Wait for cache retrieval")
 
         sut.retrieve { result in
@@ -97,7 +97,7 @@ final class CodableUserStoreTest: XCTestCase {
     }
 
     func test_retrieve_hasNoSideEffectOnEmptyCache() {
-        let sut = CodableUserStore()
+        let sut = makeSUT()
         let exp = expectation(description: "Wait for cache retrieval")
 
         sut.retrieve { firstResult in
@@ -117,7 +117,7 @@ final class CodableUserStoreTest: XCTestCase {
     }
 
     func test_retrieveAfterInsertingToEmptyCache_deliversInsertedValues() {
-        let sut = CodableUserStore()
+        let sut = makeSUT()
         let user = makeCodableLocalUser()
         let exp = expectation(description: "Wait for cache retrieval")
         sut.insert(user) { insertionError in
@@ -139,5 +139,11 @@ final class CodableUserStoreTest: XCTestCase {
         }
 
         wait(for: [exp], timeout: 1.0)
+    }
+
+    // MARK: - Helper
+
+    private func makeSUT() -> CodableUserStore {
+        return CodableUserStore()
     }
 }
