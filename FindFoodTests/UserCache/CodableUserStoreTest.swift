@@ -143,7 +143,9 @@ final class CodableUserStoreTest: XCTestCase {
 
     // MARK: - Helper
 
-    private func makeSUT() -> CodableUserStore {
-        return CodableUserStore()
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> CodableUserStore {
+        let sut = CodableUserStore()
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return sut
     }
 }
