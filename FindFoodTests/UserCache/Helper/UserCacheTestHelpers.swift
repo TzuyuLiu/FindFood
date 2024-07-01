@@ -15,8 +15,8 @@ func makeUser() -> User {
                 loginType: .facebook)
 }
 
-func makeLocalUser() -> LocalUser {
-    return LocalUser(name: "Andy",
+func makeCodableLocalUser() -> CodableLocalUser {
+    return CodableLocalUser(name: "Andy",
                 image: nil,
                 idToken: "12345",
                 loginType: .facebook)

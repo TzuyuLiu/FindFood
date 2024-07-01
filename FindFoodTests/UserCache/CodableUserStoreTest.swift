@@ -8,6 +8,31 @@
 import XCTest
 @testable import FindFood
 
+public enum CodableLocalLoginType: String, Equatable, Codable {
+    case google
+    case facebook
+}
+
+// 用來消除模組間的強耦合(UserStore 對上 User)
+public struct CodableLocalUser: Equatable, Codable {
+    let name: String
+    let image: URL?
+    let idToken: String
+    let loginType: CodableLocalLoginType // 用來判斷是用什麼軟體登入
+
+    // 其他 module 會產生 FeedLoader，因此其他 module 也會使用到
+    public init(name: String, image: URL?, idToken: String, loginType: CodableLocalLoginType) {
+        self.name = name
+        self.image = image
+        self.idToken = idToken
+        self.loginType = loginType
+    }
+
+    var localUser: LocalUser {
+        return LocalUser(name: self.name, image: self.image, idToken: self.idToken, loginType: LocalLoginType(rawValue: self.loginType.rawValue) ?? .facebook)
+    }
+}
+
 class CodableUserStore {
     func retrieve(completion: @escaping UserStore.RetrievalCompletions) {
         guard let data = try? Data(contentsOf: storeURL) else {
@@ -15,11 +40,11 @@ class CodableUserStore {
         }
 
         let decoder = JSONDecoder()
-        let cache = try! decoder.decode(LocalUser.self, from: data)
-        completion(.found(cache))
+        let cache = try! decoder.decode(CodableLocalUser.self, from: data)
+        completion(.found(cache.localUser))
     }
 
-    func insert(_ user: LocalUser, completion: @escaping UserStore.InsertionCompletions) {
+    func insert(_ user: CodableLocalUser, completion: @escaping UserStore.InsertionCompletions) {
         let encoder = JSONEncoder()
         let encoded = try! encoder.encode(user)
         try! encoded.write(to: storeURL)
@@ -93,7 +118,7 @@ final class CodableUserStoreTest: XCTestCase {
 
     func test_retrieveAfterInsertingToEmptyCache_deliversInsertedValues() {
         let sut = CodableUserStore()
-        let user = makeLocalUser()
+        let user = makeCodableLocalUser()
         let exp = expectation(description: "Wait for cache retrieval")
         sut.insert(user) { insertionError in
             XCTAssertNil(insertionError, "Expected feed to be inserted successfully")
@@ -104,7 +129,7 @@ final class CodableUserStoreTest: XCTestCase {
                     XCTAssertEqual(retrieveUser.name, user.name)
                     XCTAssertEqual(retrieveUser.idToken, user.idToken)
                     XCTAssertEqual(retrieveUser.image, user.image)
-                    XCTAssertEqual(retrieveUser.loginType, user.loginType)
+                    XCTAssertEqual(retrieveUser.loginType.rawValue, user.loginType.rawValue)
                 default:
                     XCTFail("Expected found result with user \(user), got \(retrieveResult) instead")
                 }

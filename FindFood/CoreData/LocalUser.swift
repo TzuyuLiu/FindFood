@@ -7,13 +7,13 @@
 
 import Foundation
 
-public enum LocalLoginType: String, Equatable, Codable {
+public enum LocalLoginType: String, Equatable {
     case google
     case facebook
 }
 
 // 用來消除模組間的強耦合(UserStore 對上 User)
-public struct LocalUser: Equatable, Codable {
+public struct LocalUser: Equatable {
     let name: String
     let image: URL?
     let idToken: String

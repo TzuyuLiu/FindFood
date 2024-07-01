@@ -176,7 +176,7 @@ final class CacheUserUseCaseTests: XCTestCase {
     func test_load_deliversStoredUserOnCoreData() {
         let (sut, store) = makeSUT()
         let exp = expectation(description: "Wait for load completion")
-        let existedUser = makeLocalUser()
+        let existedUser = makeCodableLocalUser()
 
         var receivedUser: User?
         sut.load { result in
@@ -189,7 +189,7 @@ final class CacheUserUseCaseTests: XCTestCase {
             exp.fulfill()
         }
 
-        store.completeRetrieval(with: existedUser)
+        store.completeRetrieval(with: existedUser.localUser)
 
         wait(for: [exp], timeout: 1.0)
         XCTAssertEqual(receivedUser?.name, existedUser.name)
