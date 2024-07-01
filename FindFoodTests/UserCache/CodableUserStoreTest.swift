@@ -139,6 +139,18 @@ final class CodableUserStoreTest: XCTestCase {
 
         expect(sut, toRetrieveTwice: .failure(anyError()))
     }
+
+    func test_insert_overridesPreviouslyInsertedCacheValues() {
+        let sut = makeSUT()
+
+        let firstInsertionError = insert(localUserA(), to: sut)
+        XCTAssertNil(firstInsertionError, "Expected to insert cache successfully")
+
+        let latestUser = localUserB()
+        let latestInsertionError = insert(latestUser, to: sut)
+        XCTAssertNil(latestInsertionError, "Expected to insert cache successfully")
+        expect(sut, toRetrieve: .found(latestUser.localUser))
+    }
     // MARK: - Helper
 
     private func makeSUT(storeURL: URL? = nil, file: StaticString = #file, line: UInt = #line) -> CodableUserStore {

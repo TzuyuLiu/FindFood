@@ -22,6 +22,13 @@ func localUserA() -> CodableLocalUser {
                 loginType: .facebook)
 }
 
+func localUserB() -> CodableLocalUser {
+    return CodableLocalUser(name: "Andy",
+                image: nil,
+                idToken: "59210",
+                loginType: .google)
+}
+
 func anyError() -> NSError {
     return NSError(domain: "An Error", code: 0)
 }
