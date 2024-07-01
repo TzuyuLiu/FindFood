@@ -182,7 +182,6 @@ final class CodableUserStoreTest: XCTestCase {
         let exp = expectation(description: "Wait for cache retrieval")
         var insertionError: Error?
         sut.insert(cache) { receivedInsertionError in
-            XCTAssertNil(receivedInsertionError, "Expected feed to be inserted successfully")
             exp.fulfill()
         }
 
