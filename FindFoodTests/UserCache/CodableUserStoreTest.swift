@@ -128,7 +128,7 @@ final class CodableUserStoreTest: XCTestCase {
 
         try! "invalid data".write(to: storeURL, atomically: false, encoding: .utf8)
 
-        expect(sut, toRetrieve: .failure(makeAnyError()))
+        expect(sut, toRetrieve: .failure(anyError()))
     }
 
     func test_retrieve_hasNoSideEffectsOnFailure() {
@@ -137,9 +137,8 @@ final class CodableUserStoreTest: XCTestCase {
 
         try! "invalid data".write(to: storeURL, atomically: false, encoding: .utf8)
 
-        expect(sut, toRetrieveTwice: .failure(makeAnyError()))
+        expect(sut, toRetrieveTwice: .failure(anyError()))
     }
-
     // MARK: - Helper
 
     private func makeSUT(storeURL: URL? = nil, file: StaticString = #file, line: UInt = #line) -> CodableUserStore {
@@ -166,14 +165,18 @@ final class CodableUserStoreTest: XCTestCase {
         expect(sut, toRetrieve: expectedResult, file: file, line: line)
     }
 
-    private func insert(_ cache: CodableLocalUser, to sut: CodableUserStore) {
+    @discardableResult
+    private func insert(_ cache: CodableLocalUser, to sut: CodableUserStore) -> Error? {
         let exp = expectation(description: "Wait for cache retrieval")
-        sut.insert(cache) { insertionError in
-            XCTAssertNil(insertionError, "Expected feed to be inserted successfully")
+        var insertionError: Error?
+        sut.insert(cache) { receivedInsertionError in
+            XCTAssertNil(receivedInsertionError, "Expected feed to be inserted successfully")
             exp.fulfill()
         }
 
         wait(for: [exp], timeout: 1.0)
+
+        return insertionError
     }
 
     private func testSpecificStoreURL() -> URL {

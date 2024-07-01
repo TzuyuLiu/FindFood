@@ -22,6 +22,6 @@ func makeCodableLocalUser() -> CodableLocalUser {
                 loginType: .facebook)
 }
 
-func makeAnyError() -> NSError {
+func anyError() -> NSError {
     return NSError(domain: "An Error", code: 0)
 }

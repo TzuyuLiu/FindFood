@@ -25,7 +25,7 @@ final class CacheUserUseCaseTests: XCTestCase {
 
     func test_save_requestLoginSuccessButSaveFail() {
         let (sut, store) = makeSUT()
-        let saveError = makeAnyError()
+        let saveError = anyError()
         expect(sut, loginResult: .success(makeUser()), toCompleteWithError: saveError) {
             store.completeSave(with: saveError)
         }
@@ -40,7 +40,7 @@ final class CacheUserUseCaseTests: XCTestCase {
 
     func test_save_requestLoginFail() {
         let (sut, _) = makeSUT()
-        let loginError = makeAnyError()
+        let loginError = anyError()
         expect(sut, loginResult: .failure(loginError), toCompleteWithError: loginError) { }
     }
 
@@ -52,7 +52,7 @@ final class CacheUserUseCaseTests: XCTestCase {
 
     func test_delete_requestLogoutSuccessButDeleteFail() {
         let (sut, store) = makeSUT()
-        let logoutError = makeAnyError()
+        let logoutError = anyError()
         let exp = expectation(description: "Wait for logout completion")
         sut.login(.success(makeUser())) { _ in }
 
@@ -71,7 +71,7 @@ final class CacheUserUseCaseTests: XCTestCase {
 
     func test_delete_requestLogoutSuccessAndDeleteSuccess() {
         let (sut, store) = makeSUT()
-        let logoutError = makeAnyError()
+        let logoutError = anyError()
         let exp = expectation(description: "Wait for logout completion")
         sut.login(.success(makeUser())) { _ in }
 
@@ -100,7 +100,7 @@ final class CacheUserUseCaseTests: XCTestCase {
 
         sut = nil
 
-        store.completeSave(with: makeAnyError())
+        store.completeSave(with: anyError())
 
         XCTAssertNil(receivedError)
     }
@@ -117,7 +117,7 @@ final class CacheUserUseCaseTests: XCTestCase {
 
         sut = nil
 
-        store.completeDelete(with: makeAnyError())
+        store.completeDelete(with: anyError())
 
         XCTAssertNil(receivedError)
     }
@@ -132,7 +132,7 @@ final class CacheUserUseCaseTests: XCTestCase {
 
     func test_load_failsOnRetrievalError() {
         let (sut, store) = makeSUT()
-        let retrievalError = makeAnyError()
+        let retrievalError = anyError()
         let exp = expectation(description: "Wait for load completion")
 
         var receivedError: Error?
