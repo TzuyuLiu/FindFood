@@ -55,10 +55,14 @@ class CodableUserStore {
     }
 
     func insert(_ user: CodableLocalUser, completion: @escaping UserStore.InsertionCompletions) {
-        let encoder = JSONEncoder()
-        let encoded = try! encoder.encode(user)
-        try! encoded.write(to: storeURL)
-        completion(nil)
+        do {
+            let encoder = JSONEncoder()
+            let encoded = try! encoder.encode(user)
+            try encoded.write(to: storeURL)
+            completion(nil)
+        } catch {
+            completion(error)
+        }
     }
 }
 
@@ -151,6 +155,16 @@ final class CodableUserStoreTest: XCTestCase {
         XCTAssertNil(latestInsertionError, "Expected to insert cache successfully")
         expect(sut, toRetrieve: .found(latestUser.localUser))
     }
+
+    func test_insert_deliversErrorOnInsertionError() {
+        let invalidStoreURL = URL(string: "invalid://store-url")!
+        let sut = makeSUT(storeURL: invalidStoreURL)
+        let user = localUserA()
+
+        let insertionError = insert(user, to: sut)
+
+        XCTAssertNotNil(insertionError, "Expected cache insertion to fail with an error")
+    }
     // MARK: - Helper
 
     private func makeSUT(storeURL: URL? = nil, file: StaticString = #file, line: UInt = #line) -> CodableUserStore {
@@ -182,6 +196,7 @@ final class CodableUserStoreTest: XCTestCase {
         let exp = expectation(description: "Wait for cache retrieval")
         var insertionError: Error?
         sut.insert(cache) { receivedInsertionError in
+            insertionError = receivedInsertionError
             exp.fulfill()
         }
 
