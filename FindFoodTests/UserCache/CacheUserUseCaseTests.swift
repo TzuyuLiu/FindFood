@@ -224,8 +224,4 @@ final class CacheUserUseCaseTests: XCTestCase {
 
         return (sut, store)
     }
-
-    private func makeAnyError() -> NSError {
-        return NSError(domain: "An Error", code: 0)
-    }
 }

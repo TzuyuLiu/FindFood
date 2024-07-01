@@ -21,3 +21,7 @@ func makeCodableLocalUser() -> CodableLocalUser {
                 idToken: "12345",
                 loginType: .facebook)
 }
+
+func makeAnyError() -> NSError {
+    return NSError(domain: "An Error", code: 0)
+}

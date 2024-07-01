@@ -46,8 +46,12 @@ class CodableUserStore {
         }
 
         let decoder = JSONDecoder()
-        let cache = try! decoder.decode(CodableLocalUser.self, from: data)
-        completion(.found(cache.localUser))
+        do {
+            let cache = try decoder.decode(CodableLocalUser.self, from: data)
+            completion(.found(cache.localUser))
+        } catch let error {
+            completion(.failure(error))
+        }
     }
 
     func insert(_ user: CodableLocalUser, completion: @escaping UserStore.InsertionCompletions) {
@@ -118,6 +122,14 @@ final class CodableUserStoreTest: XCTestCase {
         expect(sut, toRetrieveTwice: .found(user.localUser))
     }
 
+    func test_retrieve_deliversFailureOnRetrievalError() {
+        let sut = makeSUT()
+
+        try! "invalid data".write(to: testSpecificStoreURL(), atomically: false, encoding: .utf8)
+
+        expect(sut, toRetrieve: .failure(makeAnyError()))
+    }
+
     // MARK: - Helper
 
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> CodableUserStore {
@@ -129,7 +141,7 @@ final class CodableUserStoreTest: XCTestCase {
     private func expect(_ sut: CodableUserStore, toRetrieve expectedResult: RetrieveCachedUserResult, file: StaticString = #file, line: UInt = #line) {
         sut.retrieve { retrievedResult in
             switch (expectedResult, retrievedResult) {
-            case (.empty, .empty):
+            case (.empty, .empty), (.failure, .failure):
                 break
             case let (.found(expectedUser), .found(retrievedUser)):
                 XCTAssertEqual(retrievedUser, expectedUser)
