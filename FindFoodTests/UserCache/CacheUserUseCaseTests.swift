@@ -189,7 +189,7 @@ final class CacheUserUseCaseTests: XCTestCase {
             exp.fulfill()
         }
 
-        store.completeRetrieval(with: existedUser.localUser)
+        store.completeRetrieval(with: existedUser)
 
         wait(for: [exp], timeout: 1.0)
         XCTAssertEqual(receivedUser?.name, existedUser.name)

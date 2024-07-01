@@ -15,15 +15,15 @@ func userA() -> User {
                 loginType: .facebook)
 }
 
-func localUserA() -> CodableLocalUser {
-    return CodableLocalUser(name: "Andy",
+func localUserA() -> LocalUser {
+    return LocalUser(name: "Andy",
                 image: nil,
                 idToken: "12345",
                 loginType: .facebook)
 }
 
-func localUserB() -> CodableLocalUser {
-    return CodableLocalUser(name: "Andy",
+func localUserB() -> LocalUser {
+    return LocalUser(name: "Andy",
                 image: nil,
                 idToken: "59210",
                 loginType: .google)
