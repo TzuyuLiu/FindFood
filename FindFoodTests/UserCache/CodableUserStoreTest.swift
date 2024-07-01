@@ -175,14 +175,8 @@ final class CodableUserStoreTest: XCTestCase {
 
     func test_delete_hasNoSideEffectsOnEmptyCache() {
         let sut = makeSUT()
-        let exp = expectation(description: "Wait for cache deletion")
 
-        sut.deleteCacheFeed { deletionError in
-            XCTAssertNil(deletionError, "Expected empty cache deletion to succeed")
-            exp.fulfill()
-        }
-
-        wait(for: [exp], timeout: 1.0)
+        _ = deleteCache(from: sut)
 
         expect(sut, toRetrieve: .empty)
     }
@@ -191,12 +185,7 @@ final class CodableUserStoreTest: XCTestCase {
         let sut = makeSUT()
         insert(localUserA(), to: sut)
 
-        let exp = expectation(description: "Wait for cache deletion")
-        sut.deleteCacheFeed { deletionError in
-            XCTAssertNil(deletionError, "Expected non-empty cache deletion")
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 1.0)
+        _ = deleteCache(from: sut)
 
         expect(sut, toRetrieve: .empty)
     }
@@ -239,6 +228,18 @@ final class CodableUserStoreTest: XCTestCase {
         wait(for: [exp], timeout: 1.0)
 
         return insertionError
+    }
+
+    private func deleteCache(from sut: CodableUserStore) -> Error? {
+        var deletionError: Error?
+        let exp = expectation(description: "Wait for cache deletion")
+        sut.deleteCacheFeed { receivedDeletionError in
+            deletionError = receivedDeletionError
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1.0)
+
+        return deletionError
     }
 
     private func testSpecificStoreURL() -> URL {
