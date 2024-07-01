@@ -19,5 +19,5 @@ func makeLocalUser() -> LocalUser {
     return LocalUser(name: "Andy",
                 image: nil,
                 idToken: "12345",
-                loginType: "facebook")
+                loginType: .facebook)
 }

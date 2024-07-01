@@ -225,20 +225,6 @@ final class CacheUserUseCaseTests: XCTestCase {
         return (sut, store)
     }
 
-    private func makeUser() -> User {
-        return User(name: "Andy",
-                    image: nil,
-                    idToken: "12345",
-                    loginType: .facebook)
-    }
-
-    private func makeLocalUser() -> LocalUser {
-        return LocalUser(name: "Andy",
-                    image: nil,
-                    idToken: "12345",
-                    loginType: .facebook)
-    }
-
     private func makeAnyError() -> NSError {
         return NSError(domain: "An Error", code: 0)
     }
