@@ -64,6 +64,10 @@ class CodableUserStore {
             completion(error)
         }
     }
+
+    func deleteCacheFeed(completion: @escaping UserStore.DeletionCompletions) {
+        completion(nil)
+    }
 }
 
 final class CodableUserStoreTest: XCTestCase {
@@ -73,7 +77,6 @@ final class CodableUserStoreTest: XCTestCase {
         deleteStoreArtifacts()
     }
 
-
     // 注意不要 overide 到 `override class func setUp`(class method)
     // class methods 的 setUp 只會呼叫一次，並且 tearDown 會在『所有』 test 完成才執行
     // 而非 class mehtods 的 tearDown 則是每一個 test 測試完成後都會呼叫
@@ -81,7 +84,6 @@ final class CodableUserStoreTest: XCTestCase {
         super.tearDown()
         deleteStoreArtifacts()
     }
-
 
     func test_retrieve_deilversEmptyOnEmptyCache() {
         let sut = makeSUT()
@@ -165,6 +167,21 @@ final class CodableUserStoreTest: XCTestCase {
 
         XCTAssertNotNil(insertionError, "Expected cache insertion to fail with an error")
     }
+
+    func test_delete_hasNoSideEffectsOnEmptyCache() {
+        let sut = makeSUT()
+        let exp = expectation(description: "Wait for cache deletion")
+
+        sut.deleteCacheFeed { deletionError in
+            XCTAssertNil(deletionError, "Expected empty cache deletion to succeed")
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 1.0)
+
+        expect(sut, toRetrieve: .empty)
+    }
+
     // MARK: - Helper
 
     private func makeSUT(storeURL: URL? = nil, file: StaticString = #file, line: UInt = #line) -> CodableUserStore {
