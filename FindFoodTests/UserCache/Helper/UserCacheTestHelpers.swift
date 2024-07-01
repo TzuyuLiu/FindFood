@@ -8,14 +8,14 @@
 import Foundation
 @testable import FindFood
 
-func makeUser() -> User {
+func userA() -> User {
     return User(name: "Andy",
                 image: nil,
                 idToken: "12345",
                 loginType: .facebook)
 }
 
-func makeCodableLocalUser() -> CodableLocalUser {
+func localUserA() -> CodableLocalUser {
     return CodableLocalUser(name: "Andy",
                 image: nil,
                 idToken: "12345",

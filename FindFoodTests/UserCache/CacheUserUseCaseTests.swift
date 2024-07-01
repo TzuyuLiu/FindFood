@@ -18,7 +18,7 @@ final class CacheUserUseCaseTests: XCTestCase {
     func test_save_requestLoginSuccess() {
         let (sut, store) = makeSUT()
 
-        sut.login(.success(makeUser())) { _ in }
+        sut.login(.success(userA())) { _ in }
 
         XCTAssertNotNil(store.user)
     }
@@ -26,14 +26,14 @@ final class CacheUserUseCaseTests: XCTestCase {
     func test_save_requestLoginSuccessButSaveFail() {
         let (sut, store) = makeSUT()
         let saveError = anyError()
-        expect(sut, loginResult: .success(makeUser()), toCompleteWithError: saveError) {
+        expect(sut, loginResult: .success(userA()), toCompleteWithError: saveError) {
             store.completeSave(with: saveError)
         }
     }
 
     func test_save_requestLoginSuccessAndSaveSuccess() {
         let (sut, store) = makeSUT()
-        expect(sut, loginResult: .success(makeUser()), toCompleteWithError: nil) {
+        expect(sut, loginResult: .success(userA()), toCompleteWithError: nil) {
             store.completeSaveSuccessfully()
         }
     }
@@ -54,7 +54,7 @@ final class CacheUserUseCaseTests: XCTestCase {
         let (sut, store) = makeSUT()
         let logoutError = anyError()
         let exp = expectation(description: "Wait for logout completion")
-        sut.login(.success(makeUser())) { _ in }
+        sut.login(.success(userA())) { _ in }
 
         var receivedError: Error?
         try? sut.logout { error in
@@ -73,7 +73,7 @@ final class CacheUserUseCaseTests: XCTestCase {
         let (sut, store) = makeSUT()
         let logoutError = anyError()
         let exp = expectation(description: "Wait for logout completion")
-        sut.login(.success(makeUser())) { _ in }
+        sut.login(.success(userA())) { _ in }
 
         var receivedError: Error?
         try? sut.logout { error in
@@ -94,7 +94,7 @@ final class CacheUserUseCaseTests: XCTestCase {
 
         var receivedError: Error?
 
-        sut?.login(.success(makeUser()), completion: { error in
+        sut?.login(.success(userA()), completion: { error in
             receivedError = error
         })
 
@@ -176,7 +176,7 @@ final class CacheUserUseCaseTests: XCTestCase {
     func test_load_deliversStoredUserOnCoreData() {
         let (sut, store) = makeSUT()
         let exp = expectation(description: "Wait for load completion")
-        let existedUser = makeCodableLocalUser()
+        let existedUser = localUserA()
 
         var receivedUser: User?
         sut.load { result in

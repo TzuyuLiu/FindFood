@@ -106,7 +106,7 @@ final class CodableUserStoreTest: XCTestCase {
 
     func test_retrieve_deliversFoundValuesOnNonEmptyCache() {
         let sut = makeSUT()
-        let user = makeCodableLocalUser()
+        let user = localUserA()
 
         insert(user, to: sut)
 
@@ -115,7 +115,7 @@ final class CodableUserStoreTest: XCTestCase {
 
     func test_retrieve_hasNoSideEffectOnNonEmptyCache() {
         let sut = makeSUT()
-        let user = makeCodableLocalUser()
+        let user = localUserA()
         
         insert(user, to: sut)
         
