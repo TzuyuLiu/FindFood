@@ -77,19 +77,7 @@ final class CodableUserStoreTest: XCTestCase {
 
     func test_retrieve_deilversEmptyOnEmptyCache() {
         let sut = makeSUT()
-        let exp = expectation(description: "Wait for cache retrieval")
-
-        sut.retrieve { result in
-            switch result {
-            case .empty:
-                break
-            default:
-                XCTFail("Expected empty result, got \(result) instead.")
-            }
-            exp.fulfill()
-        }
-
-        wait(for: [exp], timeout: 1.0)
+        expect(sut, toRetrieve: .empty)
     }
 
     func test_retrieve_hasNoSideEffectOnEmptyCache() {
@@ -118,21 +106,10 @@ final class CodableUserStoreTest: XCTestCase {
         let exp = expectation(description: "Wait for cache retrieval")
         sut.insert(user) { insertionError in
             XCTAssertNil(insertionError, "Expected feed to be inserted successfully")
-
-            sut.retrieve { retrieveResult in
-                switch (retrieveResult) {
-                case let (.found(retrieveUser)):
-                    XCTAssertEqual(retrieveUser.name, user.name)
-                    XCTAssertEqual(retrieveUser.idToken, user.idToken)
-                    XCTAssertEqual(retrieveUser.image, user.image)
-                    XCTAssertEqual(retrieveUser.loginType.rawValue, user.loginType.rawValue)
-                default:
-                    XCTFail("Expected found result with user \(user), got \(retrieveResult) instead")
-                }
-
-                exp.fulfill()
-            }
+            exp.fulfill()
         }
+
+        expect(sut, toRetrieve: .found(user.localUser))
 
         wait(for: [exp], timeout: 1.0)
     }
@@ -170,6 +147,19 @@ final class CodableUserStoreTest: XCTestCase {
         let sut = CodableUserStore(storeURL: testSpecificStoreURL())
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
+    }
+
+    private func expect(_ sut: CodableUserStore, toRetrieve expectedResult: RetrieveCachedUserResult, file: StaticString = #file, line: UInt = #line) {
+        sut.retrieve { retrievedResult in
+            switch (expectedResult, retrievedResult) {
+            case (.empty, .empty):
+                break
+            case let (.found(expectedUser), .found(retrievedUser)):
+                XCTAssertEqual(retrievedUser, expectedUser)
+            default:
+                XCTFail("Expected to retrieve \(expectedResult), got \(retrievedResult) instead.", file: file, line: line)
+            }
+        }
     }
 
     private func testSpecificStoreURL() -> URL {
