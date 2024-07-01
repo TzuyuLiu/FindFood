@@ -62,11 +62,7 @@ final class CodableUserStoreTest: XCTestCase {
     // 非 class mehtods 的 setUp 會在每一個 test 測試開始前都會呼叫
     override func setUp() {
         super.setUp()
-
-        // 避免有時候沒有呼叫到 tearDown (e.g. 設定 breakpoint 並直接停止 test)
-        let storeURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("User.store")
-
-        try? FileManager.default.removeItem(at: storeURL)
+        try? FileManager.default.removeItem(at: storeURL())
     }
 
 
@@ -75,11 +71,7 @@ final class CodableUserStoreTest: XCTestCase {
     // 而非 class mehtods 的 tearDown 則是每一個 test 測試完成後都會呼叫
     override func tearDown() {
         super.tearDown()
-
-        // 避免數值被儲存，導致下次執行 test empty 的時候會有 side effect
-        let storeURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("User.store")
-
-        try? FileManager.default.removeItem(at: storeURL)
+        try? FileManager.default.removeItem(at: storeURL())
     }
 
 
@@ -148,8 +140,12 @@ final class CodableUserStoreTest: XCTestCase {
     // MARK: - Helper
 
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> CodableUserStore {
-        let sut = CodableUserStore(storeURL: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("User.store"))
+        let sut = CodableUserStore(storeURL: storeURL())
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
+    }
+
+    private func storeURL() -> URL {
+        return  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("image-feed.store")
     }
 }
