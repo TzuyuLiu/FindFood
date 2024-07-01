@@ -62,7 +62,7 @@ final class CodableUserStoreTest: XCTestCase {
     // 非 class mehtods 的 setUp 會在每一個 test 測試開始前都會呼叫
     override func setUp() {
         super.setUp()
-        try? FileManager.default.removeItem(at: testSpecificStoreURL())
+        deleteStoreArtifacts()
     }
 
 
@@ -71,7 +71,7 @@ final class CodableUserStoreTest: XCTestCase {
     // 而非 class mehtods 的 tearDown 則是每一個 test 測試完成後都會呼叫
     override func tearDown() {
         super.tearDown()
-        try? FileManager.default.removeItem(at: testSpecificStoreURL())
+        deleteStoreArtifacts()
     }
 
 
@@ -148,5 +148,9 @@ final class CodableUserStoreTest: XCTestCase {
     private func testSpecificStoreURL() -> URL {
         // type(of: self): 取得自己的 class name (CodableFeedStoreTests)
         return  FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!.appendingPathComponent("\(type(of: self)).store")
+    }
+
+    private func deleteStoreArtifacts() {
+        try? FileManager.default.removeItem(at: testSpecificStoreURL())
     }
 }
