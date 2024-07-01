@@ -100,7 +100,7 @@ final class CodableUserStoreTest: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
 
-    func test_retrieveAfterInsertingToEmptyCache_deliversInsertedValues() {
+    func test_retrieve_deliversFoundValuesOnNonEmptyCache() {
         let sut = makeSUT()
         let user = makeCodableLocalUser()
 
